@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c45xygccewseo"]
+[gd_scene load_steps=10 format=3 uid="uid://c45xygccewseo"]
 
 [ext_resource type="Material" uid="uid://cke7eil07c86m" path="res://green.tres" id="1_3oom2"]
 [ext_resource type="Material" uid="uid://4kc71lwu748u" path="res://blue.tres" id="2_cbmie"]
 [ext_resource type="Script" path="res://player.gd" id="3_k7bq5"]
+[ext_resource type="Script" path="res://camera_3d.gd" id="4_h672r"]
+[ext_resource type="Script" path="res://node_3d.gd" id="4_q2lcd"]
+[ext_resource type="PackedScene" uid="uid://7t2yip0iuc5i" path="res://brick_scene.tscn" id="5_sxcde"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_yv8r4"]
 size = Vector2(100, 100)
@@ -23,6 +26,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 material_override = ExtResource("2_cbmie")
 mesh = SubResource("BoxMesh_lohcp")
 script = ExtResource("3_k7bq5")
+speed = 1.0
 
 [node name="cannon" type="MeshInstance3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0.452)
@@ -31,6 +35,14 @@ skeleton = NodePath("../..")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 3.54672)
+script = ExtResource("4_h672r")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.173648, 0.969846, -0.17101, 0, -0.173648, -0.984808, -0.984808, -0.17101, 0.0301537, 0, 3.09155, -0.0145807)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.09155, -0.0145807)
+light_energy = 6.725
+light_indirect_energy = 1.07
+
+[node name="wall" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("4_q2lcd")
+brick_scene = ExtResource("5_sxcde")
