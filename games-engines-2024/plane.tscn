@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://c45xygccewseo"]
+
+[ext_resource type="Material" uid="uid://cke7eil07c86m" path="res://green.tres" id="1_3oom2"]
+[ext_resource type="Material" uid="uid://4kc71lwu748u" path="res://blue.tres" id="2_cbmie"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yv8r4"]
+size = Vector2(100, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lohcp"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_w2hdo"]
+size = Vector3(0.1, 0.1, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_3oom2")
+mesh = SubResource("PlaneMesh_yv8r4")
+
+[node name="Player" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_cbmie")
+mesh = SubResource("BoxMesh_lohcp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.495566, 0.451597)
+mesh = SubResource("BoxMesh_w2hdo")
+skeleton = NodePath("../..")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1.5)
