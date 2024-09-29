@@ -2,18 +2,23 @@ extends Node3D
 
 @export var brick_scene:PackedScene
 @export var rows = 10
-@export var cols = 10
+@export var cols = 20
+@export var radius = 3
+
 
 var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var radInc = (2 * PI) / cols
+	
 	rng.randomize()
 	for row in range(rows):
 		for col in range(cols):
-			var my_random_number = rng.randf_range(-0.5, 0.5)
+			var angle = col * radInc
+			print(angle)
 			var brick = brick_scene.instantiate()
-			var pos = Vector3((2 * PI)/col + my_random_number,row - my_random_number, (2 * PI)/col)
+			var pos = Vector3(radius * cos(angle), row , radius * sin(angle))
 			brick.position = pos
 			add_child(brick)
 
