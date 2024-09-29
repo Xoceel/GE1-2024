@@ -9,7 +9,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var f = Input.get_axis("move_back", "move_forward")
-	position.z += speed * delta * f
-	var r = Input.get_axis("turn_left", "turn_right")
-	rotate_y(rot_speed * r * delta)
+	if Input.is_action_pressed("ui_down"):
+		position.z += .1
+	if Input.is_action_pressed("ui_up"):
+		position.z -= .1
+	if Input.is_action_pressed("ui_left"):
+		position.x -= .1
+	if Input.is_action_pressed("ui_right"):
+		position.x += .1
