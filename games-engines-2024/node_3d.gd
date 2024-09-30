@@ -16,9 +16,8 @@ func _ready():
 	for row in range(rows):
 		for col in range(cols):
 			var angle = col * radInc
-			print(angle)
 			var brick = brick_scene.instantiate()
-			var pos = Vector3(radius * cos(angle), row , radius * sin(angle))
+			var pos = Vector3(radius * cos(angle) , row - .5 , radius * sin(angle) - 20)
 			brick.position = pos
 			add_child(brick)
 
