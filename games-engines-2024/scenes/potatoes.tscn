@@ -50,13 +50,14 @@ skeleton = NodePath("../..")
 shape = SubResource("WorldBoundaryShape3D_307sh")
 
 [node name="tank" type="CharacterBody3D" parent="." node_paths=PackedStringArray("bullet_spawn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(-0.994447, 0, 0.10524, 0, 1, 0, -0.10524, 0, -0.994447, 0, 0.5, 0)
 script = ExtResource("3_1hidi")
 speed = 10.0
 bullet_scene = ExtResource("6_ngcvm")
 bullet_spawn = NodePath("bullet_spawn")
 
 [node name="player" type="MeshInstance3D" parent="tank"]
+transform = Transform3D(-0.0239609, 0, 0.999713, 0, 1, 0, -0.999713, 0, -0.0239609, 0, 0, 0)
 material_override = ExtResource("2_cp1av")
 mesh = SubResource("BoxMesh_dedr2")
 skeleton = NodePath("../..")
@@ -65,7 +66,7 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_tuvxv")
 
 [node name="cam_target" type="Marker3D" parent="tank"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.39173, -5.70533)
+transform = Transform3D(0.982277, -0.187433, 0, 0.187433, 0.982277, 0, 0, 0, 1, 0, 3.392, -5.33322)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="tank"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.555838, 0.500628)

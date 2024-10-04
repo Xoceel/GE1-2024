@@ -3,13 +3,16 @@ extends Node3D
 @export var brick_scene:PackedScene
 @export var rows = 10
 @export var cols = 10
+@export var radius = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for row in range(rows):
 		for col in range(cols):
 			var brick = brick_scene.instantiate()
-			var pos = Vector3(col, row, 0)
+			var x = cos(row) * radius
+			var z = sin(row) * radius
+			var pos = Vector3(x, row, z)
 			brick.position = pos
 			
 			var m = StandardMaterial3D.new()
