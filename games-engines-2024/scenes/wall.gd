@@ -10,9 +10,9 @@ func _ready() -> void:
 	for row in range(rows):
 		for col in range(cols):
 			var brick = brick_scene.instantiate()
-			var x = cos(row) * radius
-			var z = sin(row) * radius
-			var pos = Vector3(x, row, z)
+			var x = cos(col) * radius
+			var z = sin(col) * radius
+			var pos = Vector3(x, row+0.5, z)
 			brick.position = pos
 			
 			var m = StandardMaterial3D.new()

@@ -35,7 +35,7 @@ player = NodePath("../tank")
 transform = Transform3D(0.597812, 0.487615, 0.63628, -0.63207, 0.774911, 0, -0.493061, -0.402174, 0.771458, 0, 0, 0)
 
 [node name="wall" type="Node3D" parent="."]
-transform = Transform3D(0.470596, 0, 0.882349, 0, 1, 0, -0.882349, 0, 0.470596, 0, 0, -15.2278)
+transform = Transform3D(0.470596, 0, 0.882349, 0, 1, 0, -0.882349, 0, 0.470596, 0, 0, -15.228)
 script = ExtResource("4_x4eqr")
 brick_scene = ExtResource("5_nw2f7")
 
