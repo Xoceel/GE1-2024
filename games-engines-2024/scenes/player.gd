@@ -43,11 +43,9 @@ func _physics_process(delta: float) -> void:
 	DebugDraw2D.set_text("glo basis.y", global_transform.basis.y)
 	DebugDraw2D.set_text("glo basis.z", global_transform.basis.z)
 	
-	if Input.is_action_pressed("shoot"):
+	if Input.is_action_just_released("shoot"):
 		var bullet = bullet_scene.instantiate()
 		get_parent().add_child(bullet)
-	
+		bullet.get_child(0).mesh.size *= 1.1
 		bullet.global_position = bullet_spawn.global_position
 		bullet.global_rotation = global_rotation
-	
-	pass
