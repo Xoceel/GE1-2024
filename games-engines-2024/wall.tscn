@@ -4,6 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://buu3aq61omx1k" path="res://brick.tscn" id="2_6o0r4"]
 
 [node name="wall" type="Node3D"]
-transform = Transform3D(0.470596, 0, 0.882349, 0, 1, 0, -0.882349, 0, 0.470596, 0, 0, -5.7109)
+transform = Transform3D(0.470596, 0, 0.882349, 0, 1, 0, -0.882349, 0, 0.470596, 0, 0, -5)
 script = ExtResource("1_4xmaq")
 brick_scene = ExtResource("2_6o0r4")

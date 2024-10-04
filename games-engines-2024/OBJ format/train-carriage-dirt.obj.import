@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bjct0c6i4cur4"
+path="res://.godot/imported/train-carriage-dirt.obj-35c82500ca297cc5f09185e88f277de9.mesh"
+
+[deps]
+
+files=["res://.godot/imported/train-carriage-dirt.obj-35c82500ca297cc5f09185e88f277de9.mesh"]
+
+source_file="res://OBJ format/train-carriage-dirt.obj"
+dest_files=["res://.godot/imported/train-carriage-dirt.obj-35c82500ca297cc5f09185e88f277de9.mesh", "res://.godot/imported/train-carriage-dirt.obj-35c82500ca297cc5f09185e88f277de9.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

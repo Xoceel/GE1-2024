@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ct34c8bot1alo"
+path="res://.godot/imported/railroad-damaged-straight-hill-end.obj-d96ee176727491cd7c70a1ec8792dadc.mesh"
+
+[deps]
+
+files=["res://.godot/imported/railroad-damaged-straight-hill-end.obj-d96ee176727491cd7c70a1ec8792dadc.mesh"]
+
+source_file="res://OBJ format/railroad-damaged-straight-hill-end.obj"
+dest_files=["res://.godot/imported/railroad-damaged-straight-hill-end.obj-d96ee176727491cd7c70a1ec8792dadc.mesh", "res://.godot/imported/railroad-damaged-straight-hill-end.obj-d96ee176727491cd7c70a1ec8792dadc.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

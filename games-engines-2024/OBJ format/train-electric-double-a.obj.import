@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dql601pepa7qb"
+path="res://.godot/imported/train-electric-double-a.obj-a6f800c2af925077c0ca392d0b235dba.mesh"
+
+[deps]
+
+files=["res://.godot/imported/train-electric-double-a.obj-a6f800c2af925077c0ca392d0b235dba.mesh"]
+
+source_file="res://OBJ format/train-electric-double-a.obj"
+dest_files=["res://.godot/imported/train-electric-double-a.obj-a6f800c2af925077c0ca392d0b235dba.mesh", "res://.godot/imported/train-electric-double-a.obj-a6f800c2af925077c0ca392d0b235dba.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

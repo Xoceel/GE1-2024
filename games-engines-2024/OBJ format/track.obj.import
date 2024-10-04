@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dta2pq11qah6b"
+path="res://.godot/imported/track.obj-ec0069db6bd31701a824cfd3b18645f5.mesh"
+
+[deps]
+
+files=["res://.godot/imported/track.obj-ec0069db6bd31701a824cfd3b18645f5.mesh"]
+
+source_file="res://OBJ format/track.obj"
+dest_files=["res://.godot/imported/track.obj-ec0069db6bd31701a824cfd3b18645f5.mesh", "res://.godot/imported/track.obj-ec0069db6bd31701a824cfd3b18645f5.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

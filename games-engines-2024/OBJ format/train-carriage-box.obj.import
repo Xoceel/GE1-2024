@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bkepbn0rg3ut7"
+path="res://.godot/imported/train-carriage-box.obj-ad29b4c0ccda51e8aaf07bf9de79ecec.mesh"
+
+[deps]
+
+files=["res://.godot/imported/train-carriage-box.obj-ad29b4c0ccda51e8aaf07bf9de79ecec.mesh"]
+
+source_file="res://OBJ format/train-carriage-box.obj"
+dest_files=["res://.godot/imported/train-carriage-box.obj-ad29b4c0ccda51e8aaf07bf9de79ecec.mesh", "res://.godot/imported/train-carriage-box.obj-ad29b4c0ccda51e8aaf07bf9de79ecec.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

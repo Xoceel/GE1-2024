@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dv7g5o3aj5ldx"
+path="res://.godot/imported/railroad-straight-hill-complete-half.obj-c086c6c6adc46fc215bda505bfbd6d2d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/railroad-straight-hill-complete-half.obj-c086c6c6adc46fc215bda505bfbd6d2d.mesh"]
+
+source_file="res://OBJ format/railroad-straight-hill-complete-half.obj"
+dest_files=["res://.godot/imported/railroad-straight-hill-complete-half.obj-c086c6c6adc46fc215bda505bfbd6d2d.mesh", "res://.godot/imported/railroad-straight-hill-complete-half.obj-c086c6c6adc46fc215bda505bfbd6d2d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

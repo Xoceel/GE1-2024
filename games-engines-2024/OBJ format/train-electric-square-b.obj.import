@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ca0vnbjmstjee"
+path="res://.godot/imported/train-electric-square-b.obj-e5bfeeb74b208ca97e51c34986086ede.mesh"
+
+[deps]
+
+files=["res://.godot/imported/train-electric-square-b.obj-e5bfeeb74b208ca97e51c34986086ede.mesh"]
+
+source_file="res://OBJ format/train-electric-square-b.obj"
+dest_files=["res://.godot/imported/train-electric-square-b.obj-e5bfeeb74b208ca97e51c34986086ede.mesh", "res://.godot/imported/train-electric-square-b.obj-e5bfeeb74b208ca97e51c34986086ede.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

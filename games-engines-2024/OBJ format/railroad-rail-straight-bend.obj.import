@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://btm7obhmjqs7e"
+path="res://.godot/imported/railroad-rail-straight-bend.obj-9d74a0c54efe5270a778c50d73047b78.mesh"
+
+[deps]
+
+files=["res://.godot/imported/railroad-rail-straight-bend.obj-9d74a0c54efe5270a778c50d73047b78.mesh"]
+
+source_file="res://OBJ format/railroad-rail-straight-bend.obj"
+dest_files=["res://.godot/imported/railroad-rail-straight-bend.obj-9d74a0c54efe5270a778c50d73047b78.mesh", "res://.godot/imported/railroad-rail-straight-bend.obj-9d74a0c54efe5270a778c50d73047b78.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cnytguxnoldef"
+path="res://.godot/imported/train-electric-bullet-c.obj-0a44f76625bc0dd1a6b2b92a9cb61e59.mesh"
+
+[deps]
+
+files=["res://.godot/imported/train-electric-bullet-c.obj-0a44f76625bc0dd1a6b2b92a9cb61e59.mesh"]
+
+source_file="res://OBJ format/train-electric-bullet-c.obj"
+dest_files=["res://.godot/imported/train-electric-bullet-c.obj-0a44f76625bc0dd1a6b2b92a9cb61e59.mesh", "res://.godot/imported/train-electric-bullet-c.obj-0a44f76625bc0dd1a6b2b92a9cb61e59.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

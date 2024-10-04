@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://4d4458p7lt2"
+path="res://.godot/imported/train-electric-city-a.obj-b3783d10d439b9a17ede66473d1fd874.mesh"
+
+[deps]
+
+files=["res://.godot/imported/train-electric-city-a.obj-b3783d10d439b9a17ede66473d1fd874.mesh"]
+
+source_file="res://OBJ format/train-electric-city-a.obj"
+dest_files=["res://.godot/imported/train-electric-city-a.obj-b3783d10d439b9a17ede66473d1fd874.mesh", "res://.godot/imported/train-electric-city-a.obj-b3783d10d439b9a17ede66473d1fd874.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

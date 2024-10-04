@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dyr0s4n7x3x5r"
+path="res://.godot/imported/train-locomotive-passenger-b.obj-6d5b87c949bee30c263cca899a9d4a10.mesh"
+
+[deps]
+
+files=["res://.godot/imported/train-locomotive-passenger-b.obj-6d5b87c949bee30c263cca899a9d4a10.mesh"]
+
+source_file="res://OBJ format/train-locomotive-passenger-b.obj"
+dest_files=["res://.godot/imported/train-locomotive-passenger-b.obj-6d5b87c949bee30c263cca899a9d4a10.mesh", "res://.godot/imported/train-locomotive-passenger-b.obj-6d5b87c949bee30c263cca899a9d4a10.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://biue4fmhw1di7"
+path="res://.godot/imported/train-carriage-container-green.obj-1d24dd4911a3833abde4677b07eb66bf.mesh"
+
+[deps]
+
+files=["res://.godot/imported/train-carriage-container-green.obj-1d24dd4911a3833abde4677b07eb66bf.mesh"]
+
+source_file="res://OBJ format/train-carriage-container-green.obj"
+dest_files=["res://.godot/imported/train-carriage-container-green.obj-1d24dd4911a3833abde4677b07eb66bf.mesh", "res://.godot/imported/train-carriage-container-green.obj-1d24dd4911a3833abde4677b07eb66bf.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

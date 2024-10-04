@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://drbmk2ncqaiyv"
+path="res://.godot/imported/railroad-straight-skew-left.obj-bfcf1d3911a4a6b3c66b798e923b0955.mesh"
+
+[deps]
+
+files=["res://.godot/imported/railroad-straight-skew-left.obj-bfcf1d3911a4a6b3c66b798e923b0955.mesh"]
+
+source_file="res://OBJ format/railroad-straight-skew-left.obj"
+dest_files=["res://.godot/imported/railroad-straight-skew-left.obj-bfcf1d3911a4a6b3c66b798e923b0955.mesh", "res://.godot/imported/railroad-straight-skew-left.obj-bfcf1d3911a4a6b3c66b798e923b0955.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

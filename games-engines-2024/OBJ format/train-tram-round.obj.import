@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://x83r6iu1htkp"
+path="res://.godot/imported/train-tram-round.obj-1112a10b0cc6fc62ec1c6823eaaa9767.mesh"
+
+[deps]
+
+files=["res://.godot/imported/train-tram-round.obj-1112a10b0cc6fc62ec1c6823eaaa9767.mesh"]
+
+source_file="res://OBJ format/train-tram-round.obj"
+dest_files=["res://.godot/imported/train-tram-round.obj-1112a10b0cc6fc62ec1c6823eaaa9767.mesh", "res://.godot/imported/train-tram-round.obj-1112a10b0cc6fc62ec1c6823eaaa9767.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

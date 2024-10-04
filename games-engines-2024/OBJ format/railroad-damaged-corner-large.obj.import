@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bt8lbduvg7ww8"
+path="res://.godot/imported/railroad-damaged-corner-large.obj-594ddb922e2e5fb2c8d02cb2a0d7342c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/railroad-damaged-corner-large.obj-594ddb922e2e5fb2c8d02cb2a0d7342c.mesh"]
+
+source_file="res://OBJ format/railroad-damaged-corner-large.obj"
+dest_files=["res://.godot/imported/railroad-damaged-corner-large.obj-594ddb922e2e5fb2c8d02cb2a0d7342c.mesh", "res://.godot/imported/railroad-damaged-corner-large.obj-594ddb922e2e5fb2c8d02cb2a0d7342c.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

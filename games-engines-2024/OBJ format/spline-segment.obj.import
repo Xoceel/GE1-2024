@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dcryhnilfryra"
+path="res://.godot/imported/spline-segment.obj-2e56fdd45fe4d9e9275c6bf3ec970e82.mesh"
+
+[deps]
+
+files=["res://.godot/imported/spline-segment.obj-2e56fdd45fe4d9e9275c6bf3ec970e82.mesh"]
+
+source_file="res://OBJ format/spline-segment.obj"
+dest_files=["res://.godot/imported/spline-segment.obj-2e56fdd45fe4d9e9275c6bf3ec970e82.mesh", "res://.godot/imported/spline-segment.obj-2e56fdd45fe4d9e9275c6bf3ec970e82.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

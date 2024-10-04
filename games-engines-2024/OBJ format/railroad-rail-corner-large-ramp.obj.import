@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bppytlfxy67xx"
+path="res://.godot/imported/railroad-rail-corner-large-ramp.obj-653ae8af93e07c1758b7eba4fb606369.mesh"
+
+[deps]
+
+files=["res://.godot/imported/railroad-rail-corner-large-ramp.obj-653ae8af93e07c1758b7eba4fb606369.mesh"]
+
+source_file="res://OBJ format/railroad-rail-corner-large-ramp.obj"
+dest_files=["res://.godot/imported/railroad-rail-corner-large-ramp.obj-653ae8af93e07c1758b7eba4fb606369.mesh", "res://.godot/imported/railroad-rail-corner-large-ramp.obj-653ae8af93e07c1758b7eba4fb606369.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

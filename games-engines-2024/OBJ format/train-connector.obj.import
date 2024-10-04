@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ca3e56mkfpfia"
+path="res://.godot/imported/train-connector.obj-fd17a32f1cff621fccd771bee5cc6ca0.mesh"
+
+[deps]
+
+files=["res://.godot/imported/train-connector.obj-fd17a32f1cff621fccd771bee5cc6ca0.mesh"]
+
+source_file="res://OBJ format/train-connector.obj"
+dest_files=["res://.godot/imported/train-connector.obj-fd17a32f1cff621fccd771bee5cc6ca0.mesh", "res://.godot/imported/train-connector.obj-fd17a32f1cff621fccd771bee5cc6ca0.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

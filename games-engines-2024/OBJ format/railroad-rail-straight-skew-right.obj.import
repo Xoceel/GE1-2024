@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://0n6hnej5atbs"
+path="res://.godot/imported/railroad-rail-straight-skew-right.obj-f2cf2a593346b9f499989f2d7efb6d6a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/railroad-rail-straight-skew-right.obj-f2cf2a593346b9f499989f2d7efb6d6a.mesh"]
+
+source_file="res://OBJ format/railroad-rail-straight-skew-right.obj"
+dest_files=["res://.godot/imported/railroad-rail-straight-skew-right.obj-f2cf2a593346b9f499989f2d7efb6d6a.mesh", "res://.godot/imported/railroad-rail-straight-skew-right.obj-f2cf2a593346b9f499989f2d7efb6d6a.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

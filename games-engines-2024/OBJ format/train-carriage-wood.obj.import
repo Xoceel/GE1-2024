@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bjtrqmsv1xjtq"
+path="res://.godot/imported/train-carriage-wood.obj-27789867a91bec05fcb567c0d262ff95.mesh"
+
+[deps]
+
+files=["res://.godot/imported/train-carriage-wood.obj-27789867a91bec05fcb567c0d262ff95.mesh"]
+
+source_file="res://OBJ format/train-carriage-wood.obj"
+dest_files=["res://.godot/imported/train-carriage-wood.obj-27789867a91bec05fcb567c0d262ff95.mesh", "res://.godot/imported/train-carriage-wood.obj-27789867a91bec05fcb567c0d262ff95.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

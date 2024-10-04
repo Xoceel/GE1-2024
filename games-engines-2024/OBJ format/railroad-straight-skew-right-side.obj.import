@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://pcotedvkl6g8"
+path="res://.godot/imported/railroad-straight-skew-right-side.obj-cbe4e1fbaf69efc495bad076b6137ebf.mesh"
+
+[deps]
+
+files=["res://.godot/imported/railroad-straight-skew-right-side.obj-cbe4e1fbaf69efc495bad076b6137ebf.mesh"]
+
+source_file="res://OBJ format/railroad-straight-skew-right-side.obj"
+dest_files=["res://.godot/imported/railroad-straight-skew-right-side.obj-cbe4e1fbaf69efc495bad076b6137ebf.mesh", "res://.godot/imported/railroad-straight-skew-right-side.obj-cbe4e1fbaf69efc495bad076b6137ebf.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
