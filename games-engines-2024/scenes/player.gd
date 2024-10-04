@@ -17,7 +17,7 @@ func _physics_process(delta: float) -> void:
 	# position.z += speed * delta
 	# global_position.z += speed * delta
 	
-	var f = Input.get_axis("move_back", "move_forward")
+	var f = Input.get_axis("move_forward", "move_back")
 	
 	var v = Vector3()	
 	v = global_transform.basis.z	
