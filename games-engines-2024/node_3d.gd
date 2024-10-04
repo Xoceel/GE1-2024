@@ -3,7 +3,7 @@ extends Node3D
 @export var brick_scene:PackedScene
 @export var rows = 10
 @export var cols = 20
-@export var radius = 3
+@export var radius = 20
 
 
 var rng = RandomNumberGenerator.new()
@@ -17,7 +17,7 @@ func _ready():
 		for col in range(cols):
 			var angle = col * radInc
 			var brick = brick_scene.instantiate()
-			var pos = Vector3(radius * cos(angle) , row - .5 , radius * sin(angle) - 20)
+			var pos = Vector3(radius * cos(angle) , row -.5 , radius * sin(angle))
 			brick.position = pos
 			add_child(brick)
 

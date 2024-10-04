@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfxwavofm3d80"]
+[gd_scene load_steps=8 format=3 uid="uid://3mplleduq1rv"]
 
-[ext_resource type="PackedScene" uid="uid://doh57x62urmi0" path="res://tank.tscn" id="2_84ptr"]
-[ext_resource type="Material" uid="uid://4kc71lwu748u" path="res://blue.tres" id="2_cbmie"]
-[ext_resource type="Script" path="res://camera_3d.gd" id="4_h672r"]
-[ext_resource type="Script" path="res://node_3d.gd" id="4_q2lcd"]
-[ext_resource type="PackedScene" uid="uid://bfqc76lqnhk41" path="res://brick_scene.tscn" id="5_sxcde"]
+[ext_resource type="Material" uid="uid://4kc71lwu748u" path="res://blue.tres" id="1_qve4t"]
+[ext_resource type="PackedScene" uid="uid://doh57x62urmi0" path="res://tank.tscn" id="2_16qvr"]
+[ext_resource type="Script" path="res://camera_3d.gd" id="3_wgpxt"]
+[ext_resource type="Script" path="res://node_3d.gd" id="4_6wreq"]
+[ext_resource type="PackedScene" uid="uid://bfqc76lqnhk41" path="res://brick_scene.tscn" id="5_qwesw"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_yv8r4"]
 size = Vector2(100, 100)
@@ -12,26 +12,26 @@ size = Vector2(100, 100)
 [sub_resource type="BoxShape3D" id="BoxShape3D_3va08"]
 size = Vector3(100, 0, 100)
 
-[node name="Node3D" type="StaticBody3D"]
+[node name="World" type="StaticBody3D"]
 
 [node name="Ground" type="MeshInstance3D" parent="."]
-material_override = ExtResource("2_cbmie")
+material_override = ExtResource("1_qve4t")
 mesh = SubResource("PlaneMesh_yv8r4")
 
-[node name="Tank1" parent="." instance=ExtResource("2_84ptr")]
+[node name="Tank1" parent="." instance=ExtResource("2_16qvr")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.934702, 0.355433, 0, -0.355433, 0.934702, 0, 2.85967, 3.6136)
 current = true
-script = ExtResource("4_h672r")
+script = ExtResource("3_wgpxt")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 3.09155, -0.0145807)
 
 [node name="wall" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-script = ExtResource("4_q2lcd")
-brick_scene = ExtResource("5_sxcde")
+script = ExtResource("4_6wreq")
+brick_scene = ExtResource("5_qwesw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_3va08")
