@@ -10,7 +10,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	#changes timer based on bpm
 	timer.wait_time = 60 / bpm
+	
+	#logic to increase or decrease bpm using up and down arrows
 	if Input.is_action_just_pressed("bpm_up") and not Input.is_action_pressed("shift"):
 		bpm += 5
 		print(bpm)
