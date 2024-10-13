@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://depa53oy2uq1y"]
+[gd_scene load_steps=9 format=3 uid="uid://depa53oy2uq1y"]
 
 [ext_resource type="PackedScene" uid="uid://cdit0bahr35yp" path="res://Scenes/floor.tscn" id="1_8p8xh"]
 [ext_resource type="PackedScene" uid="uid://cio8g76mb6gvu" path="res://Scenes/player.tscn" id="1_gacg4"]
+[ext_resource type="PackedScene" uid="uid://d3ifjdw0rpnvc" path="res://Scenes/box.tscn" id="1_tevcm"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_mume7"]
 
@@ -20,11 +21,9 @@ sky_material = SubResource("ProceduralSkyMaterial_c63et")
 background_mode = 2
 sky = SubResource("Sky_eejtf")
 
-[sub_resource type="BoxMesh" id="BoxMesh_c3vqg"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_7j451"]
-
 [node name="Main" type="Node3D"]
+
+[node name="Box" parent="." instance=ExtResource("1_tevcm")]
 
 [node name="Floor" parent="." instance=ExtResource("1_8p8xh")]
 
@@ -36,12 +35,3 @@ shadow_enabled = true
 environment = SubResource("Environment_tpdcr")
 
 [node name="Player" parent="." instance=ExtResource("1_gacg4")]
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 3)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-mesh = SubResource("BoxMesh_c3vqg")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("BoxShape3D_7j451")
