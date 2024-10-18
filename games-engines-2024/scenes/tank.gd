@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @export var speed:float = -1
 @export var rot_speed = 180.0
-
+@export var enemy: Node3D
 @export var bullet_scene:PackedScene
 @export var bullet_spawn:Node3D
 
@@ -65,3 +65,14 @@ func _physics_process(delta: float) -> void:
 		bullet.global_rotation = global_rotation
 		timer.start()
 	pass
+
+
+func _process(delta: float) -> void:
+	var toEnemy: Vector3 = enemy.global_position - global_position
+	toEnemy = toEnemy.normalized()
+	var d:float = global_transform.basis.z.dot(toEnemy)
+	var theta = acos(d)
+	
+	theta = rad_to_deg(theta)
+	
+	DebugDraw2D.set_text("Theta", theta)

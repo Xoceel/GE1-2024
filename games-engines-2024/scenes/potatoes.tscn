@@ -52,10 +52,11 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("WorldBoundaryShape3D_307sh")
 
-[node name="tank" type="CharacterBody3D" parent="." node_paths=PackedStringArray("bullet_spawn")]
+[node name="tank" type="CharacterBody3D" parent="." node_paths=PackedStringArray("enemy", "bullet_spawn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("3_1hidi")
 speed = 10.0
+enemy = NodePath("../enemy")
 bullet_scene = ExtResource("6_ngcvm")
 bullet_spawn = NodePath("bullet_spawn")
 
@@ -93,3 +94,5 @@ brick_scene = ExtResource("5_nw2f7")
 radius = 5.0
 elements = 22
 brick_size = 1.0
+
+[node name="enemy" type="MeshInstance3D" parent="."]
