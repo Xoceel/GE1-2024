@@ -2,8 +2,7 @@
 
 [ext_resource type="Script" path="res://clock.gd" id="1_5a8ra"]
 [ext_resource type="Script" path="res://Scenes/sequencer.gd" id="2_3exph"]
-
-[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_ga5sv"]
+[ext_resource type="AudioStream" uid="uid://f2kql6n6i104" path="res://Yamaha-TG-55-Piano-C3.wav" id="3_4jwgh"]
 
 [node name="Synth" type="Node"]
 
@@ -16,8 +15,38 @@ autostart = true
 [node name="Sequencer" type="Node" parent="."]
 script = ExtResource("2_3exph")
 
+[node name="Player" type="AudioStreamPlayer" parent="Sequencer"]
+stream = ExtResource("3_4jwgh")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Sequencer"]
-stream = SubResource("AudioStreamSynchronized_ga5sv")
+stream = ExtResource("3_4jwgh")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Sequencer"]
+stream = ExtResource("3_4jwgh")
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Sequencer"]
+stream = ExtResource("3_4jwgh")
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="Sequencer"]
+stream = ExtResource("3_4jwgh")
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="Sequencer"]
+stream = ExtResource("3_4jwgh")
+
+[node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="Sequencer"]
+stream = ExtResource("3_4jwgh")
+
+[node name="AudioStreamPlayer7" type="AudioStreamPlayer" parent="Sequencer"]
+stream = ExtResource("3_4jwgh")
+
+[node name="AudioStreamPlayer8" type="AudioStreamPlayer" parent="Sequencer"]
+stream = ExtResource("3_4jwgh")
+
+[node name="AudioStreamPlayer9" type="AudioStreamPlayer" parent="Sequencer"]
+stream = ExtResource("3_4jwgh")
+
+[node name="AudioStreamPlayer10" type="AudioStreamPlayer" parent="Sequencer"]
+stream = ExtResource("3_4jwgh")
 
 [connection signal="timeout" from="Clock/Timer" to="Clock" method="_on_timer_timeout"]
 [connection signal="timeout" from="Clock/Timer" to="Sequencer" method="_on_timer_timeout"]

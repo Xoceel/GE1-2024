@@ -2,7 +2,6 @@ extends Node
 @onready var timer = $Timer
 @export var bpm : float = 60.0
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("Timer Started")

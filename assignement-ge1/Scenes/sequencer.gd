@@ -2,14 +2,29 @@ extends Node
 
 var playback # Will hold the AudioStreamGeneratorPlayback.
 var pulse_hz = 440.0 # The frequency of the sound wave - A4
-
-
-@onready var audio_stream_player = $AudioStreamPlayer
-@onready var sample_hz = 44100.0
+@onready var sample_hz = 22050.0
 const YAMAHA_TG_55_PIANO_C_3 = preload("res://Yamaha-TG-55-Piano-C3.wav")
 const Sample_440 = preload("res://440.wav")
+var current_step = 0
+var playing = true
+
+@onready var audio_stream_player_1 = $AudioStreamPlayer
+@onready var audio_stream_player_2 = $AudioStreamPlayer2
+@onready var audio_stream_player_3 = $AudioStreamPlayer3
+@onready var audio_stream_player_4 = $AudioStreamPlayer4
+@onready var audio_stream_player_5 = $AudioStreamPlayer5
+@onready var audio_stream_player_6 = $AudioStreamPlayer6
+@onready var audio_stream_player_7 = $AudioStreamPlayer7
+@onready var audio_stream_player_8 = $AudioStreamPlayer8
+@onready var audio_stream_player_9 = $AudioStreamPlayer9
+@onready var audio_stream_player_10 = $AudioStreamPlayer10
+@onready var audio_stream_player_11 = $Player
+
+@onready var audio_stream_players = []
+
 # list of notes that need to be given audio stream generators in the synch player
 var notes = []
+var step_notes = []
 # frequencies for the 
 var frequency_ratios = {
 	'A' : 1, 
@@ -28,36 +43,103 @@ var frequency_ratios = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
+	set_audio_streams_sample(YAMAHA_TG_55_PIANO_C_3)
+	audio_stream_players = [audio_stream_player_1, audio_stream_player_2, audio_stream_player_3, audio_stream_player_4, audio_stream_player_5, audio_stream_player_6, audio_stream_player_7, audio_stream_player_8, audio_stream_player_9, audio_stream_player_10, audio_stream_player_11]
 	# how to set the audio streams up
-	audio_stream_player.stream.set_sync_stream(0, Sample_440)
-	
-	print(audio_stream_player.stream.stream_count)
-	audio_stream_player.play()
+	#audio_stream_player.stream.set_sync_stream(0, Sample_440)
+	#
+	#print(audio_stream_player.stream.stream_count)
+	#audio_stream_player.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("A"):
 		notes.append('A')
+		play_note(not_playing_audio_player(), 'D')
+	if Input.is_action_just_pressed("A#"):
+		notes.append('A#')
+		play_note(not_playing_audio_player(), 'A')
+	if Input.is_action_just_pressed("B"):
+		notes.append('B')
+	if Input.is_action_just_pressed("C"):
+		notes.append('C')
+	if Input.is_action_just_pressed("C#"):
+		notes.append('C#')
+	if Input.is_action_just_pressed("D"):
+		notes.append('D')
+	if Input.is_action_just_pressed("D#"):
+		notes.append('D#')
+	if Input.is_action_just_pressed("E"):
+		notes.append('E')
+	if Input.is_action_just_pressed("F"):
+		notes.append('F')
+	if Input.is_action_just_pressed("F#"):
+		notes.append('F#')
+	if Input.is_action_just_pressed("G"):
+		notes.append('G')
+	if Input.is_action_just_pressed("G#"):
+		notes.append('G#')
+	if Input.is_action_just_pressed("oct_up"):
+		change_octave(2)
+	if Input.is_action_just_pressed("oct_down"):
+		change_octave(.5)
+	if Input.is_action_just_pressed("next_step"):
+		store_step()
+	if Input.is_action_just_pressed("play_pause"):
+		if !playing:
+			playing = true
+		elif playing:
+			playing = false
+
+
 
 func clear_notes():
 	notes = []
 
-func mute_all_streams():
-	for i in range(audio_stream_player.stream.stream_count):
-		audio_stream_player.stream.set_sync_stream_volume(-100)
+func not_playing_audio_player():
+	for i in range(audio_stream_players.size()):
+		if not audio_stream_players[i].is_playing():
+			print(audio_stream_players[i])
+			return audio_stream_players[i]
 
-func set_audio_streams_sample():
-	for i in range(notes.size()):
-		audio_stream_player.stream.set_sync_stream(i, Sample_440)
+func change_octave(dir_val):
+	for ratio in frequency_ratios:
+		frequency_ratios[ratio] *= dir_val
 
-func set_audio_streams_notes():
+#func mute_all_streams():
+	#for i in range(audio_stream_player.stream.stream_count):
+		#audio_stream_player.stream.set_sync_stream_volume(-100)
+#
+func set_audio_streams_sample(stream):
+	for i in range(audio_stream_players.size()):
+		audio_stream_players[i].stream = stream
+#
+## Great plan except that individual streams dont control pitch scale :| back to figuring out generators
+#func set_audio_streams_notes():
+	#for i in range(notes.size()):
+		#audio_stream_player.stream.get_sync_stream(i).pitch_scale *= frequency_ratios[notes[i]]
+		#audio_stream_player.stream.set_sync_stream_volume(0)
+
+func show_step(current_step):
+	print("Step: " + (current_step + 1) + " notes: " + notes)
+
+func store_step():
+	step_notes.append(notes)
+	clear_notes()
+
+func play_note(player, note):
+	if player:
+		player.pitch_scale = 1
+		player.pitch_scale *= frequency_ratios[notes[0]]
+		notes.append(note)
+		player.play()
+
+func play_notes():
 	for i in range(notes.size()):
-		audio_stream_player.stream.get_sync_stream(i).stream.pitch_scale *= frequency_ratios[notes[i]]
-		audio_stream_player.stream.set_sync_stream_volume(0)
+		var asp = not_playing_audio_player()
+		if asp:
+			play_note(asp, i)
 
 func _on_timer_timeout():
-	set_audio_streams_sample()
-	set_audio_streams_notes()
-	audio_stream_player.play()
-	clear_notes()
+	if playing:
+		play_notes()
