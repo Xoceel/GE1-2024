@@ -45,11 +45,7 @@ var frequency_ratios = {
 func _ready():
 	set_audio_streams_sample(YAMAHA_TG_55_PIANO_C_3)
 	audio_stream_players = [audio_stream_player_1, audio_stream_player_2, audio_stream_player_3, audio_stream_player_4, audio_stream_player_5, audio_stream_player_6, audio_stream_player_7, audio_stream_player_8, audio_stream_player_9, audio_stream_player_10, audio_stream_player_11]
-	# how to set the audio streams up
-	#audio_stream_player.stream.set_sync_stream(0, Sample_440)
-	#
-	#print(audio_stream_player.stream.stream_count)
-	#audio_stream_player.play()
+	show_step(current_step)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -84,7 +80,9 @@ func _process(delta):
 	if Input.is_action_just_pressed("oct_down"):
 		change_octave(.5)
 	if Input.is_action_just_pressed("next_step"):
+		show_step(current_step)
 		store_step()
+		current_step += 1
 	if Input.is_action_just_pressed("play_pause"):
 		if !playing:
 			playing = true
@@ -106,22 +104,15 @@ func change_octave(dir_val):
 	for ratio in frequency_ratios:
 		frequency_ratios[ratio] *= dir_val
 
-#func mute_all_streams():
-	#for i in range(audio_stream_player.stream.stream_count):
-		#audio_stream_player.stream.set_sync_stream_volume(-100)
 #
 func set_audio_streams_sample(stream):
 	for i in range(audio_stream_players.size()):
 		audio_stream_players[i].stream = stream
-#
-## Great plan except that individual streams dont control pitch scale :| back to figuring out generators
-#func set_audio_streams_notes():
-	#for i in range(notes.size()):
-		#audio_stream_player.stream.get_sync_stream(i).pitch_scale *= frequency_ratios[notes[i]]
-		#audio_stream_player.stream.set_sync_stream_volume(0)
+
 
 func show_step(current_step):
-	print("Step: " + (current_step + 1) + " notes: " + notes)
+	current_step = current_step % 17
+	print("Step: " + str(current_step + 1) + " notes: " + str(notes))
 
 func store_step():
 	step_notes.append(notes)
@@ -134,12 +125,13 @@ func play_note(player, note):
 		notes.append(note)
 		player.play()
 
-func play_notes():
-	for i in range(notes.size()):
-		var asp = not_playing_audio_player()
-		if asp:
-			play_note(asp, i)
+func play_notes(current_step):
+	if step_notes.size() > current_step:
+		for i in range(step_notes[current_step].size()):
+			var asp = not_playing_audio_player()
+			if asp:
+				play_note(asp, i)
 
 func _on_timer_timeout():
 	if playing:
-		play_notes()
+		play_notes(current_step)
