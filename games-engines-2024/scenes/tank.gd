@@ -68,10 +68,21 @@ func _physics_process(delta: float) -> void:
 
 
 func _process(delta: float) -> void:
+	
 	var toEnemy: Vector3 = enemy.global_position - global_position
 	toEnemy = toEnemy.normalized()
+	#dot product of two Vector3
 	var d:float = global_transform.basis.z.dot(toEnemy)
+	
+	#inverse of cos
 	var theta = acos(d)
+	var fov = 45
+	#not quite working 
+	if theta < fov:
+		DebugDraw2D.set_text("Inside", theta < fov)
+	else:
+		DebugDraw2D.set_text("Outside", theta < fov)
+		
 	
 	theta = rad_to_deg(theta)
 	
