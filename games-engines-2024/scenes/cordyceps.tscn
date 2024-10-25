@@ -4,12 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="3_widw5"]
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="4_d1xpo"]
 [ext_resource type="Material" uid="uid://dvo75cymypytd" path="res://green.tres" id="4_sxyf8"]
-[ext_resource type="PackedScene" uid="uid://c22b64h4ohfjt" path="res://pad.tscn" id="6_0k6bf"]
+[ext_resource type="PackedScene" uid="uid://c22b64h4ohfjt" path="res://scenes/pad.tscn" id="6_0k6bf"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/player/player_body.gd" id="8_0wnol"]
 [ext_resource type="AudioStream" uid="uid://b85mjbi4mwe7" path="res://samples/openhat-808.wav" id="11_fqvv2"]
 [ext_resource type="Script" path="res://FPController.gd" id="12_g01t0"]
-[ext_resource type="Script" path="res://sequencer.gd" id="15_mr8ci"]
-[ext_resource type="PackedScene" uid="uid://dm1qa5btl0821" path="res://pad_a.tscn" id="16_m0tst"]
+[ext_resource type="Script" path="res://scenes/sequencer.gd" id="15_mr8ci"]
+[ext_resource type="PackedScene" uid="uid://dm1qa5btl0821" path="res://scenes/pad_a.tscn" id="16_m0tst"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_00q4b"]
 size = Vector2(100, 100)

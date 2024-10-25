@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c1bnq83851e46"]
 
-[ext_resource type="Script" path="res://bullet.gd" id="1_12hsy"]
+[ext_resource type="Script" path="res://scenes/bullet.gd" id="1_b5usc"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_25qko"]
 size = Vector3(0.1, 0.1, 0.1)
@@ -9,7 +9,7 @@ size = Vector3(0.1, 0.1, 0.1)
 size = Vector3(0.1, 0.1, 0.1)
 
 [node name="bullet" type="CharacterBody3D"]
-script = ExtResource("1_12hsy")
+script = ExtResource("1_b5usc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_25qko")

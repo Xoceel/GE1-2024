@@ -5,8 +5,8 @@
 [ext_resource type="Material" uid="uid://12bqh76svrfe" path="res://blue.tres" id="2_cp1av"]
 [ext_resource type="Script" path="res://scenes/tank.gd" id="3_1hidi"]
 [ext_resource type="Script" path="res://scenes/wall.gd" id="4_x4eqr"]
-[ext_resource type="PackedScene" uid="uid://buu3aq61omx1k" path="res://brick.tscn" id="5_nw2f7"]
-[ext_resource type="PackedScene" uid="uid://c1bnq83851e46" path="res://bullet.tscn" id="6_ngcvm"]
+[ext_resource type="PackedScene" uid="uid://buu3aq61omx1k" path="res://scenes/brick.tscn" id="5_nw2f7"]
+[ext_resource type="PackedScene" uid="uid://c1bnq83851e46" path="res://scenes/bullet.tscn" id="6_ngcvm"]
 [ext_resource type="Script" path="res://scenes/tower.gd" id="8_57hm3"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_00q4b"]

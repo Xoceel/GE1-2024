@@ -100,6 +100,7 @@ func _on_timer_timeout() -> void:
 	play_step(step)
 	step = (step + 1) % steps
 
+# Begins the loop of the sequencer purple ball not blue array of balls
 func _on_start_stop_area_entered(area: Area3D) -> void:
 	if $Timer.is_stopped():
 		$Timer.start()
