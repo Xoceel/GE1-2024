@@ -30,11 +30,10 @@ func _ready():
 		elif XRInterface.XR_ENV_BLEND_MODE_ADDITIVE in modes:
 			xr_interface.environment_blend_mode = XRInterface.XR_ENV_BLEND_MODE_ADDITIVE
 		else:
-			print("ARGH!!!!")
-			return false
+			print("Blah!!!!")
 	else:
 		print("OpenXR not initialized, please check if your headset is connected")
-	get_window().set_current_screen(1)
+	get_window().set_current_screen(0)
 	
 	get_viewport().transparent_bg = true
 	environment.background_mode = Environment.BG_CLEAR_COLOR

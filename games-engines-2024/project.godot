@@ -79,5 +79,6 @@ anti_aliasing/quality/msaa_3d=3
 
 openxr/enabled=true
 openxr/environment_blend_mode=2
+openxr/foveation_level=1
 openxr/startup_alert=false
 shaders/enabled=true

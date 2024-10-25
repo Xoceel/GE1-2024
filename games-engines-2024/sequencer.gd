@@ -8,7 +8,7 @@ var players:Array
 var sequence = []
 var file_names = []
 
-@export var path_str = "res://samples" 
+@export var path_str = "res://samples/" 
 @export var pad_scene:PackedScene
 
 @export var steps = 8
@@ -85,6 +85,7 @@ func make_sequencer():
 			add_child(pad)
 		
 func load_samples():
+	print("loading samples")
 	var dir = DirAccess.open(path_str)
 	if dir:
 		dir.list_dir_begin()
@@ -104,6 +105,7 @@ func load_samples():
 				# samples[name] = asp
 			
 				var stream = load(path_str + "/" + file_name)
+				print(stream.resource_name)
 				stream.resource_name = file_name
 				samples.push_back(stream)
 				file_names.push_back(file_name)

@@ -135,7 +135,6 @@ surface_material_override/0 = ExtResource("8_tqx1f")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.561553, 2.5, 0.665063)
 script = ExtResource("16_6ue7p")
 font = ExtResource("7_150ad")
-path_str = "res://notes/bla"
 pad_scene = ExtResource("17_pakd3")
 steps = 16
 
