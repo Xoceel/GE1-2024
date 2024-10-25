@@ -1,17 +1,14 @@
 extends Node3D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 @export var score = 0
 @export var speed:float = 10
 @export var rot_speed =0.5
-var controlling = true
+@export var can_move:bool = true
 
+var controlling = true
 var relative:Vector2 = Vector2.ZERO
 
+# Allows ESC to bring the mouse back to screen
 func _input(event):
 	if event is InputEventMouseMotion and controlling:
 		relative = event.relative
@@ -21,15 +18,11 @@ func _input(event):
 		else:			
 			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		controlling = ! controlling
-
+		controlling = !controlling
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	pass # Replace with function body.
-
-@export var can_move:bool = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -43,7 +36,7 @@ func _process(delta):
 		if Input.is_key_pressed(KEY_SHIFT):
 			mult = 3
 		
-		var turn = Input.get_axis("turn_left", "turn_right") - v.x	
+		var turn = Input.get_axis("turn_left", "turn_right") - v.x
 		if abs(turn) > 0:   
 			position = position + global_transform.basis.x * speed * turn * mult * delta
 			# global_translate(global_transform.basis.x * speed * turn * mult * delta)
@@ -55,8 +48,3 @@ func _process(delta):
 		var upanddown = Input.get_axis("move_up", "move_down")
 		if abs(upanddown) > 0:     
 			global_translate(- global_transform.basis.y * speed * upanddown * mult * delta)
-
-
-func _on_area_3d_area_entered(area):
-	score += 1
-	print("Score: ", score)

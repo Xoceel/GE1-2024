@@ -57,7 +57,7 @@ skeleton = NodePath("../..")
 shape = SubResource("WorldBoundaryShape3D_307sh")
 
 [node name="tank" type="CharacterBody3D" parent="." node_paths=PackedStringArray("bullet_spawn", "enemy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -12.2677)
 floor_constant_speed = true
 script = ExtResource("5_25tct")
 speed = 10.0
