@@ -1,7 +1,10 @@
 extends MeshInstance3D
 
 @onready var tank : Node3D = $"../tank"
-
+var to_player
+var forward
+var theta
+var axis
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -10,15 +13,15 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var to_player = tank.global_position - global_position
+	to_player = tank.global_position - global_position
 	to_player = to_player.normalized()
-	var forward = global_transform.basis.z
+	forward = global_transform.basis.z
 	DebugDraw3D.draw_arrow(global_position, global_position + forward * 5, Color.BROWN, 0.1)
 	DebugDraw2D.set_text("enemy_to_player: ", to_player)
 	DebugDraw2D.set_text("enemy_forward_vector: ", forward)
 	
-	var theta = acos(to_player.dot(forward))
-	var axis = to_player.cross(forward)
+	theta = acos(to_player.dot(forward))
+	axis = to_player.cross(forward)
 	DebugDraw2D.set_text("Axis: ", axis)
 	DebugDraw2D.set_text("Angle to player: ", rad_to_deg(theta))
 	
