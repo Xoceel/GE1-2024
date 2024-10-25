@@ -11,8 +11,17 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var to_player = tank.global_position - global_position
+	to_player = to_player.normalized()
 	var forward = global_transform.basis.z
 	DebugDraw3D.draw_arrow(global_position, global_position + forward * 5, Color.BROWN, 0.1)
 	DebugDraw2D.set_text("enemy_to_player: ", to_player)
 	DebugDraw2D.set_text("enemy_forward_vector: ", forward)
+	
+	var theta = acos(to_player.dot(forward))
+	var axis = to_player.cross(forward)
+	DebugDraw2D.set_text("Axis: ", axis)
+	DebugDraw2D.set_text("Angle to player: ", rad_to_deg(theta))
+	
+	rotation = Vector3(0, theta, 0)
+	
 	
