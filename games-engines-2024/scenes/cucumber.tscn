@@ -1,14 +1,14 @@
 [gd_scene load_steps=17 format=3 uid="uid://4yqkqc20uq4e"]
 
-[ext_resource type="Script" path="res://scenes/TPCamera.gd" id="1_l18n1"]
-[ext_resource type="Script" path="res://scenes/wall.gd" id="2_ve43a"]
+[ext_resource type="Script" path="res://Scripts/TPCamera.gd" id="1_l18n1"]
+[ext_resource type="Script" path="res://Scripts/wall.gd" id="2_ve43a"]
 [ext_resource type="PackedScene" uid="uid://buu3aq61omx1k" path="res://scenes/brick.tscn" id="3_ckcpv"]
-[ext_resource type="Material" uid="uid://dvo75cymypytd" path="res://green.tres" id="4_deykw"]
-[ext_resource type="Script" path="res://scenes/tank.gd" id="5_25tct"]
+[ext_resource type="Material" uid="uid://dvo75cymypytd" path="res://Materials/green.tres" id="4_deykw"]
+[ext_resource type="Script" path="res://Scripts/tank.gd" id="5_25tct"]
 [ext_resource type="PackedScene" uid="uid://c1bnq83851e46" path="res://scenes/bullet.tscn" id="6_hpt3e"]
-[ext_resource type="Material" uid="uid://12bqh76svrfe" path="res://blue.tres" id="7_bwa58"]
-[ext_resource type="Script" path="res://scenes/tower.gd" id="8_f610v"]
-[ext_resource type="Script" path="res://scenes/enemy.gd" id="9_c8vw8"]
+[ext_resource type="Material" uid="uid://12bqh76svrfe" path="res://Materials/blue.tres" id="7_bwa58"]
+[ext_resource type="Script" path="res://Scripts/tower.gd" id="8_f610v"]
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="9_c8vw8"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_00q4b"]
 size = Vector2(100, 100)

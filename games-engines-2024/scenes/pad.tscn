@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c22b64h4ohfjt"]
 
-[ext_resource type="Script" path="res://scenes/pad.gd" id="1_2vxij"]
+[ext_resource type="Script" path="res://Scripts/pad.gd" id="1_2vxij"]
 [ext_resource type="AudioStream" uid="uid://dfcreb028o4qs" path="res://samples/clap-808.wav" id="2_oorug"]
 
 

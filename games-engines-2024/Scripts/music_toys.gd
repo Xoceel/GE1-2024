@@ -1,6 +1,5 @@
 class_name Root extends Node3D
 
-
 @onready var environment:Environment = $WorldEnvironment.environment
 
 #Toggle between fullscreen and small screen
