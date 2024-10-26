@@ -27,11 +27,13 @@ func _ready():
 	load_samples()
 	make_beatpads()
 	initialise_step_arrays()
-	make_steps()
 	for i in range(50):
 		var asp = AudioStreamPlayer.new()
 		add_child(asp)
 		players.push_back(asp)
+
+func _process(delta):
+	check_steps()
 
 # Loads all sample and file names into respective lists
 func load_samples():
@@ -65,13 +67,20 @@ func make_beatpads():
 
 # Creates a new bool array for that instruments steps (should be played on step or not)
 func initialise_step_arrays():
-	for i in range(instruments):
+	for i in range(samples.size()):
 		var new_instrument = []
 		instrument_steps.push_back(new_instrument)
 		for step in range(steps):
 			instrument_steps[i].push_back(false)
 
+func check_steps():
+	for i in range(step_balls.size()):
+		instrument_steps[last_instrument][i] = step_balls[i].toggle
+
 func make_steps():
+	if step_balls:
+		for i in range(step_balls.size()):
+			step_balls[i].queue_free()
 	for step in range(steps):
 		var step_ball = pad_scene.instantiate()
 		var sb_pos = Vector3(s * step * spacer, s * 2 * spacer, 0)
@@ -79,6 +88,9 @@ func make_steps():
 		step_ball.rotation = rotation
 		add_child(step_ball)
 		step_balls.push_back(step_ball)
+
+func toggle_step(step):
+	instrument_steps[last_instrument][step]
 
 # Plays a singular sample given a sample index
 func play_sample(e, i):
@@ -91,6 +103,7 @@ func play_sample(e, i):
 
 # toggles whether or not the pad is true or false and plays it
 func toggle_pad(e, instrument):
+	make_steps()
 	if last_instrument != null:
 		pads[last_instrument].manual_toggle()
 	print("toggle " + str(instrument))
@@ -101,7 +114,9 @@ func toggle_pad(e, instrument):
 func play_step(step):
 	var p = Vector3(s * step * spacer, s * 2 * spacer, 0)
 	$timer_ball.position = p
-	
+	for instrument in range(instrument_steps.size()):
+		if instrument_steps[instrument][step]:
+			play_sample(instrument, step)
 
 # Plays the steps on every timer time out and increments the step
 func _on_timer_timeout() -> void:
