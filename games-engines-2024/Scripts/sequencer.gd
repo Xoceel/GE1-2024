@@ -116,7 +116,7 @@ func play_step(step):
 	$timer_ball.position = p
 	for instrument in range(instrument_steps.size()):
 		if instrument_steps[instrument][step]:
-			play_sample(instrument, step)
+			play_sample(0, instrument)
 
 # Plays the steps on every timer time out and increments the step
 func _on_timer_timeout() -> void:
