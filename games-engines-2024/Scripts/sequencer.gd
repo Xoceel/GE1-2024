@@ -8,7 +8,6 @@ extends Marker3D
 var instruments:int
 var s = 0.04
 var spacer = 1.1
-var beatpads = []
 var file_names = []
 var samples:Array
 var players:Array
@@ -17,6 +16,7 @@ var step:int = 0
 var last_instrument = null
 var instrument_steps = []
 var pads = []
+var step_balls = []
 
 # Goal remake the sequencer so that it has beat pads 1 per sample
 # The sequence steps should be visible and when a sample pad is hit
@@ -25,7 +25,6 @@ var pads = []
 
 func _ready():
 	load_samples()
-	initialise_beatpads(samples.size())
 	make_beatpads()
 	initialise_step_arrays()
 	make_steps()
@@ -53,12 +52,6 @@ func load_samples():
 				file_names.push_back(file_name)
 			file_name = dir.get_next()
 
-
-func initialise_beatpads(instruments):
-	for i in range(instruments):
-		beatpads.append(false)
-	self.instruments = instruments
-
 # Make a beatpad for each sample
 func make_beatpads():
 	for instrument in range(samples.size()):
@@ -81,10 +74,11 @@ func initialise_step_arrays():
 func make_steps():
 	for step in range(steps):
 		var step_ball = pad_scene.instantiate()
-		var sb_pos = Vector3(s * step * spacer, s * 1 * spacer, 0)
+		var sb_pos = Vector3(s * step * spacer, s * 2 * spacer, 0)
 		step_ball.position = sb_pos
 		step_ball.rotation = rotation
 		add_child(step_ball)
+		step_balls.push_back(step_ball)
 
 # Plays a singular sample given a sample index
 func play_sample(e, i):
@@ -100,17 +94,14 @@ func toggle_pad(e, instrument):
 	if last_instrument != null:
 		pads[last_instrument].manual_toggle()
 	print("toggle " + str(instrument))
-	beatpads[instrument] = !beatpads[instrument]
 	play_sample(0, instrument)
 	last_instrument = instrument
 
 # Goes through each instrument on the current column and plays them if they're true
 func play_step(step):
-	var p = Vector3(s * step * spacer, s * -1 * spacer, 0)
+	var p = Vector3(s * step * spacer, s * 2 * spacer, 0)
 	$timer_ball.position = p
-	for instrument in range(instruments):
-		if beatpads[instrument]:
-			play_sample(0, instrument)
+	
 
 # Plays the steps on every timer time out and increments the step
 func _on_timer_timeout() -> void:
@@ -122,5 +113,7 @@ func _on_timer_timeout() -> void:
 func _on_start_stop_area_entered(area: Area3D) -> void:
 	if $Timer.is_stopped():
 		$Timer.start()
+		$timer_ball.position = Vector3(s * step * spacer, s * 2 * spacer, 0)
+		$timer_ball.visible = true
 	else:
 		$Timer.stop()
