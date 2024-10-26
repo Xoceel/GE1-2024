@@ -22,6 +22,10 @@ func set_mat():
 	else:
 		mat.albedo_color = out_color
 
+func manual_toggle():
+	toggle = !toggle
+	set_mat()
+
 func _on_area_entered(area: Area3D) -> void:
 	#flip toggle
 	toggle = !toggle
