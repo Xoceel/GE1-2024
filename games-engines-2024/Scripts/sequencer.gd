@@ -36,11 +36,11 @@ func _ready():
 		add_child(asp)
 		players.push_back(asp)
 
-## I want to check the state of the step balls every frame to see if they have changed
-## this should update the according instrument step array and swap them to true if any have been toggled
-#func _process(delta):
-	#if last_instrument:
-		#check_steps(last_instrument)
+# I want to check the state of the step balls every frame to see if they have changed
+# this should update the according instrument step array and swap them to true if any have been toggled
+func _process(delta):
+	if last_instrument:
+		store_steps(last_instrument)
 
 # Loads all sample and file names into respective lists
 func load_samples():
@@ -84,10 +84,10 @@ func initialise_step_arrays():
 			instrument_steps[i].push_back(false)
 
 # might work to get back to old toggle state but toggles aren't being saved rn
-func set_steps():
+func find_steps(instrument):
 	for i in range(steps):
-		if last_instrument:
-			step_balls[i].toggle = instrument_steps[last_instrument][i]
+		if instrument_steps[instrument][i]:
+			step_balls[i].manual_toggle()
 
 # I want to store the current toggle state of the steps for a given instrument
 # this should get done between swapping to a new instrument
@@ -128,6 +128,7 @@ func toggle_pad(e, instrument):
 		store_steps(last_instrument)
 		pads[last_instrument].manual_toggle()
 	make_steps()
+	find_steps(instrument)
 	print("toggle " + str(instrument))
 	play_sample(0, instrument)
 	last_instrument = instrument
