@@ -23,6 +23,10 @@ var step_balls = []
 # you should be looking at the steps of that instrument alone
 
 
+# Load in samples into samples[] : AudioStreams
+# Make a beatpad for each sample that toggles colour on collision and plays the instrument
+# Set up an array to keep track of all the instruments whether they should be played or not on a given step
+# Set up 50 asps to play the audio 
 func _ready():
 	load_samples()
 	make_beatpads()
@@ -32,8 +36,11 @@ func _ready():
 		add_child(asp)
 		players.push_back(asp)
 
-func _process(delta):
-	check_steps()
+## I want to check the state of the step balls every frame to see if they have changed
+## this should update the according instrument step array and swap them to true if any have been toggled
+#func _process(delta):
+	#if last_instrument:
+		#check_steps(last_instrument)
 
 # Loads all sample and file names into respective lists
 func load_samples():
@@ -54,7 +61,8 @@ func load_samples():
 				file_names.push_back(file_name)
 			file_name = dir.get_next()
 
-# Make a beatpad for each sample
+# Make a beatpad for each sample, all in a row with equal space between them in 3D
+# and adds them to a list of pads so I can make sure only one is toggled at a time
 func make_beatpads():
 	for instrument in range(samples.size()):
 		var pad = pad_scene.instantiate()
@@ -66,6 +74,8 @@ func make_beatpads():
 		pads.push_back(pad)
 
 # Creates a new bool array for that instruments steps (should be played on step or not)
+# [[false/true...n_steps],[],[]] where the inside brackets represent an instrument and the bool values
+# represent whether they should get played or not on a give step
 func initialise_step_arrays():
 	for i in range(samples.size()):
 		var new_instrument = []
@@ -73,14 +83,25 @@ func initialise_step_arrays():
 		for step in range(steps):
 			instrument_steps[i].push_back(false)
 
-func check_steps():
-	for i in range(step_balls.size()):
-		instrument_steps[last_instrument][i] = step_balls[i].toggle
+# might work to get back to old toggle state but toggles aren't being saved rn
+func set_steps():
+	for i in range(steps):
+		if last_instrument:
+			step_balls[i].toggle = instrument_steps[last_instrument][i]
 
+# I want to store the current toggle state of the steps for a given instrument
+# this should get done between swapping to a new instrument
+func store_steps(last_instrument):
+	for i in range(steps):
+		if last_instrument:
+			instrument_steps[last_instrument][i] = step_balls[i].toggle
+
+# Make the visible balls to show the steps for an instrument
 func make_steps():
-	if step_balls:
+	if !step_balls.is_empty():
 		for i in range(step_balls.size()):
 			step_balls[i].queue_free()
+		step_balls.clear()
 	for step in range(steps):
 		var step_ball = pad_scene.instantiate()
 		var sb_pos = Vector3(s * step * spacer, s * 2 * spacer, 0)
@@ -89,10 +110,10 @@ func make_steps():
 		add_child(step_ball)
 		step_balls.push_back(step_ball)
 
-func toggle_step(step):
-	instrument_steps[last_instrument][step]
+#func toggle_step(step):
+	#instrument_steps[last_instrument][step]
 
-# Plays a singular sample given a sample index
+# Plays a singular sample given a sample index 
 func play_sample(e, i):
 	print("play sample:" + str(i))
 	var p:AudioStream = samples[i]
@@ -103,9 +124,10 @@ func play_sample(e, i):
 
 # toggles whether or not the pad is true or false and plays it
 func toggle_pad(e, instrument):
-	make_steps()
 	if last_instrument != null:
+		store_steps(last_instrument)
 		pads[last_instrument].manual_toggle()
+	make_steps()
 	print("toggle " + str(instrument))
 	play_sample(0, instrument)
 	last_instrument = instrument
@@ -123,6 +145,7 @@ func _on_timer_timeout() -> void:
 	print("step " + str(step))
 	play_step(step)
 	step = (step + 1) % steps
+	
 
 # Begins the loop of the sequencer purple ball not blue array of balls
 func _on_start_stop_area_entered(area: Area3D) -> void:
