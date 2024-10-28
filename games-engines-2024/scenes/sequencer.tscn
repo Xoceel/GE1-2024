@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=3 uid="uid://d3la86fft8exy"]
+
+[ext_resource type="Script" path="res://Scripts/sequencer.gd" id="1_f5tdu"]
+[ext_resource type="FontFile" uid="uid://rvjbc8pu44du" path="res://fonts/Hyperspace.otf" id="2_wnqbh"]
+[ext_resource type="PackedScene" uid="uid://dm1qa5btl0821" path="res://scenes/pad_a.tscn" id="3_1vohi"]
+[ext_resource type="Material" uid="uid://bwy778jyvpj15" path="res://Materials/seq_mat.tres" id="4_6xvuu"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_gynoj"]
+radius = 0.02
+height = 0.04
+
+[sub_resource type="BoxMesh" id="BoxMesh_ij1ga"]
+size = Vector3(1, 0.4, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xkks4"]
+albedo_color = Color(0.176419, 0.176419, 0.176419, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_xdnjr"]
+radius = 0.02
+height = 0.04
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wku2e"]
+radius = 0.02
+
+[node name="sequencer" type="Marker3D"]
+script = ExtResource("1_f5tdu")
+font = ExtResource("2_wnqbh")
+pad_scene = ExtResource("3_1vohi")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.125
+
+[node name="timer_ball" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+visible = false
+mesh = SubResource("SphereMesh_gynoj")
+surface_material_override/0 = ExtResource("4_6xvuu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23, 0.1, -0.05)
+mesh = SubResource("BoxMesh_ij1ga")
+surface_material_override/0 = SubResource("StandardMaterial3D_xkks4")
+
+[node name="start_stop" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0)
+
+[node name="mesh" type="MeshInstance3D" parent="start_stop"]
+mesh = SubResource("SphereMesh_xdnjr")
+surface_material_override/0 = ExtResource("4_6xvuu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="start_stop"]
+shape = SubResource("SphereShape3D_wku2e")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="start_stop" to="." method="_on_start_stop_area_entered"]

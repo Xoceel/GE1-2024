@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dm1qa5btl0821"]
+[gd_scene load_steps=6 format=3 uid="uid://dm1qa5btl0821"]
 
 [ext_resource type="Script" path="res://Scripts/pad_a.gd" id="1_ubeam"]
 
@@ -8,6 +8,9 @@ height = 0.04
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e7fbh"]
 transparency = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_mlumy"]
+size = Vector3(0.04, 0.04, 0.025)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bjof5"]
 radius = 0.02
@@ -20,6 +23,9 @@ in_color = Color(1, 0.95, 0, 0.494118)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_25gaw")
 surface_material_override/0 = SubResource("StandardMaterial3D_e7fbh")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_mlumy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_bjof5")

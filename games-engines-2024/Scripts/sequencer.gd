@@ -3,7 +3,7 @@ extends Marker3D
 @export var font:Font
 @export var path_str = "res://samples"
 @export var pad_scene:PackedScene
-@export var steps = 8
+@export var steps = 12
 
 var instruments:int
 var s = 0.04
@@ -17,11 +17,6 @@ var last_instrument = null
 var instrument_steps = []
 var pads = []
 var step_balls = []
-
-# Goal remake the sequencer so that it has beat pads 1 per sample
-# The sequence steps should be visible and when a sample pad is hit
-# you should be looking at the steps of that instrument alone
-
 
 # Load in samples into samples[] : AudioStreams
 # Make a beatpad for each sample that toggles colour on collision and plays the instrument
@@ -64,20 +59,24 @@ func load_samples():
 # Make a beatpad for each sample, all in a row with equal space between them in 3D
 # and adds them to a list of pads so I can make sure only one is toggled at a time
 func make_beatpads():
+	var rowSize = steps
+	var row = 0
 	for instrument in range(samples.size()):
+		row = -(instrument / rowSize)
 		var pad = pad_scene.instantiate()
-		var p = Vector3(s * instrument * spacer, s * 0 * spacer, 0)
+		var p = Vector3(s * (instrument % rowSize) * spacer, s * row * spacer, 0)
 		pad.position = p
 		pad.rotation = rotation
 		pad.area_entered.connect(toggle_pad.bind(instrument))
 		add_child(pad)
 		pads.push_back(pad)
+		
 
 # Creates a new bool array for that instruments steps (should be played on step or not)
 # [[false/true...n_steps],[],[]] where the inside brackets represent an instrument and the bool values
 # represent whether they should get played or not on a give step
 func initialise_step_arrays():
-	for i in range(samples.size()):
+	for i in range(pads.size()):
 		var new_instrument = []
 		instrument_steps.push_back(new_instrument)
 		for step in range(steps):
@@ -86,6 +85,7 @@ func initialise_step_arrays():
 # might work to get back to old toggle state but toggles aren't being saved rn
 func find_steps(instrument):
 	for i in range(steps):
+		print("Instrument: "+str(instrument) + " Step: " + str(i))
 		if instrument_steps[instrument][i]:
 			step_balls[i].manual_toggle()
 
@@ -115,7 +115,7 @@ func make_steps():
 
 # Plays a singular sample given a sample index 
 func play_sample(e, i):
-	print("play sample:" + str(i))
+	#print("play sample:" + str(i))
 	var p:AudioStream = samples[i]
 	var asp = players[asp_index]
 	asp.stream = p
@@ -132,6 +132,7 @@ func toggle_pad(e, instrument):
 	print("toggle " + str(instrument))
 	play_sample(0, instrument)
 	last_instrument = instrument
+	print("last instrument: " + str(last_instrument))
 
 # Goes through each instrument on the current column and plays them if they're true
 func play_step(step):
@@ -143,7 +144,7 @@ func play_step(step):
 
 # Plays the steps on every timer time out and increments the step
 func _on_timer_timeout() -> void:
-	print("step " + str(step))
+	#print("step " + str(step))
 	play_step(step)
 	step = (step + 1) % steps
 	
