@@ -1,0 +1,9 @@
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://b0whhea3e0obi"]
+
+[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_rl88g"]
+resource_name = "SpectrumAnalyzer"
+
+[resource]
+bus/0/send = &"MusicVisualiser"
+bus/0/effect/0/effect = SubResource("AudioEffectSpectrumAnalyzer_rl88g")
+bus/0/effect/0/enabled = true

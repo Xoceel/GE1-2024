@@ -1,7 +1,7 @@
 [gd_scene load_steps=39 format=3 uid="uid://c3sccy6x0ht5j"]
 
 [ext_resource type="Script" path="res://examples_dd3d/DebugDrawDemoScene.gd" id="1"]
-[ext_resource type="FontFile" uid="uid://erdgllynwqkw" path="res://examples_dd3d/Roboto-Bold.ttf" id="2_aedbq"]
+[ext_resource type="FontFile" uid="uid://bar7bcesmuhlo" path="res://Roboto-Bold.ttf" id="2_aedbq"]
 [ext_resource type="Script" path="res://examples_dd3d/demo_camera_movement.gd" id="3_3m1mp"]
 [ext_resource type="Script" path="res://examples_dd3d/demo_music_visualizer.gd" id="4_eq2lt"]
 [ext_resource type="Script" path="res://examples_dd3d/demo_settings_panel.gd" id="5_31v5h"]
@@ -807,7 +807,6 @@ size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 13
 item_count = 1
 popup/item_0/text = "1.0.0"
-popup/item_0/id = 0
 
 [node name="Label" type="Label" parent="Settings/HBox/VBoxContainer"]
 layout_mode = 2

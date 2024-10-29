@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d3la86fft8exy"]
+[gd_scene load_steps=15 format=3 uid="uid://d3la86fft8exy"]
 
 [ext_resource type="Script" path="res://Scripts/sequencer.gd" id="1_f5tdu"]
 [ext_resource type="FontFile" uid="uid://rvjbc8pu44du" path="res://fonts/Hyperspace.otf" id="2_wnqbh"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://croivo7b5qo83" path="res://scenes/main_panel.tscn" id="6_8f5gg"]
 [ext_resource type="FontFile" uid="uid://bv01ijyer8qah" path="res://Schaeffer.ttf" id="7_jkq7d"]
 [ext_resource type="PackedScene" uid="uid://bmlqeo44h07g6" path="res://scenes/slider.tscn" id="8_gdtqh"]
+[ext_resource type="Script" path="res://scenes/spectrum_visual.gd" id="9_0b6pu"]
+[ext_resource type="PackedScene" uid="uid://bxowbwtvxdott" path="res://scenes/bar.tscn" id="10_wtxdm"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_gynoj"]
 radius = 0.02
@@ -78,22 +80,31 @@ text = "Steps"
 font = ExtResource("7_jkq7d")
 font_size = 30
 
-[node name="step_effects" type="Node3D" parent="."]
+[node name="SpectrumVisual" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0157337, 0.524033, 0.10286)
+script = ExtResource("9_0b6pu")
+bar = ExtResource("10_wtxdm")
 
-[node name="Randomness" parent="step_effects" instance=ExtResource("8_gdtqh")]
+[node name="End" type="Node3D" parent="SpectrumVisual"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.466241, 0, 0)
+
+[node name="StepEffects" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.32831e-10, 0, 0)
+
+[node name="Randomness" parent="StepEffects" instance=ExtResource("8_gdtqh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.600114, 0.071487, -0.00240732)
 
-[node name="Label3D2" type="Label3D" parent="step_effects/Randomness"]
+[node name="Label3D2" type="Label3D" parent="StepEffects/Randomness"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0024572, 0.171023, 0.00365889)
 pixel_size = 0.0005
 text = "Rand"
 font = ExtResource("7_jkq7d")
 font_size = 30
 
-[node name="Probability" parent="step_effects" instance=ExtResource("8_gdtqh")]
+[node name="Probability" parent="StepEffects" instance=ExtResource("8_gdtqh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.696605, 0.071487, -0.00240732)
 
-[node name="Label3D3" type="Label3D" parent="step_effects/Probability"]
+[node name="Label3D3" type="Label3D" parent="StepEffects/Probability"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0009799, 0.171023, 0.00365889)
 pixel_size = 0.0005
 text = "Prob"
@@ -102,6 +113,6 @@ font_size = 30
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="start_stop" to="." method="_on_start_stop_area_entered"]
-[connection signal="new_value" from="step_effects/Randomness" to="." method="_on_randomness_new_value"]
-[connection signal="new_value" from="step_effects/Randomness" to="." method="_on_slider_new_value"]
-[connection signal="new_value" from="step_effects/Probability" to="." method="_on_probability_new_value"]
+[connection signal="new_value" from="StepEffects/Randomness" to="." method="_on_randomness_new_value"]
+[connection signal="new_value" from="StepEffects/Randomness" to="." method="_on_slider_new_value"]
+[connection signal="new_value" from="StepEffects/Probability" to="." method="_on_probability_new_value"]

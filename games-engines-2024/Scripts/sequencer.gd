@@ -20,7 +20,6 @@ var step_balls = []
 var randomness = 0.0
 var probability = 0.0
 var randomInt : int = 0
-var spectrum
 
 # Load in samples into samples[] : AudioStreams
 # Make a beatpad for each sample that toggles colour on collision and plays the instrument
@@ -34,9 +33,6 @@ func _ready():
 		var asp = AudioStreamPlayer.new()
 		add_child(asp)
 		players.push_back(asp)
-	play_sample(0,1)
-	spectrum = AudioServer.get_bus_effect_instance(0,0)
-	print(spectrum)
 
 
 # I want to check the state of the step balls every frame to see if they have changed
@@ -165,6 +161,7 @@ func _on_start_stop_area_entered(area: Area3D) -> void:
 		$Timer.start()
 		$timer_ball.position = Vector3(s * step * spacer, s * 2 * spacer, 0)
 		$timer_ball.visible = true
+		play_sample(0, 0)
 	else:
 		$Timer.stop()
 
