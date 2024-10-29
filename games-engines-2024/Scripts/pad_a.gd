@@ -2,6 +2,7 @@ extends Area3D
 
 @export var out_color:Color
 @export var in_color:Color
+@onready var labelled = $Labelled
 
 var toggle:bool = false
 var mat:StandardMaterial3D

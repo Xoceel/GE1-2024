@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxowbwtvxdott"]
+
+[ext_resource type="Script" path="res://scenes/bar.gd" id="1_3pyln"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_svolx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_uif6j"]
+material = SubResource("StandardMaterial3D_svolx")
+size = Vector3(0.001, 0.4, 0.001)
+
+[node name="Bar" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_uif6j")
+script = ExtResource("1_3pyln")

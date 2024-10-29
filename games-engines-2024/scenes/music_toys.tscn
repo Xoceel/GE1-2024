@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://cmxsk4jm7l87j"]
+[gd_scene load_steps=20 format=3 uid="uid://cmxsk4jm7l87j"]
 
 [ext_resource type="Script" path="res://Scripts/music_toys.gd" id="1_5r4j1"]
 [ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="5_1d70w"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="6_ps2n4"]
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="7_gkolm"]
+[ext_resource type="PackedScene" uid="uid://dg3gr6ofd8yx4" path="res://addons/godot-xr-tools/functions/movement_world_grab.tscn" id="7_qr0iq"]
 [ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="7_v21c2"]
 [ext_resource type="PackedScene" uid="uid://8sj4gd2jxyyq" path="res://scenes/moveable_sequencer.tscn" id="9_rogbi"]
 [ext_resource type="Material" uid="uid://dvo75cymypytd" path="res://Materials/green.tres" id="11_g562f"]
@@ -30,16 +31,11 @@ height = 0.04
 radius = 0.01
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fy7ik"]
+margin = 0.01
 radius = 0.1
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uox6i"]
 radius = 0.1
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_m50k3"]
-size = Vector3(1, 1.5, 0.5)
-
-[sub_resource type="BoxMesh" id="BoxMesh_4qbqg"]
-size = Vector3(1, 1.5, 0.5)
 
 [node name="root" type="Node3D"]
 script = ExtResource("1_5r4j1")
@@ -63,6 +59,7 @@ environment = SubResource("Environment_c4jos")
 
 [node name="player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 0
 script = ExtResource("12_xomjn")
 rot_speed = 180.0
 
@@ -79,6 +76,7 @@ tracker = &"left_hand"
 strafe = true
 
 [node name="Area3D" type="Area3D" parent="player/XROrigin/left"]
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="player/XROrigin/left/Area3D"]
 shape = SubResource("SphereShape3D_m1hcr")
@@ -93,11 +91,14 @@ mesh = SubResource("SphereMesh_qp3di")
 
 [node name="FunctionPickup" parent="player/XROrigin/left/LeftHand" instance=ExtResource("6_ps2n4")]
 
+[node name="MovementWorldGrab" parent="player/XROrigin/left/LeftHand" instance=ExtResource("7_qr0iq")]
+
 [node name="right" type="XRController3D" parent="player/XROrigin"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
 tracker = &"right_hand"
 
 [node name="Area3D" type="Area3D" parent="player/XROrigin/right"]
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="player/XROrigin/right/Area3D"]
 shape = SubResource("SphereShape3D_32eju")
@@ -114,30 +115,24 @@ mesh = SubResource("SphereMesh_qp3di")
 
 [node name="XRToolsPlayerBody" type="CharacterBody3D" parent="player/XROrigin"]
 top_level = true
+collision_layer = 0
 script = ExtResource("15_sj4n6")
+push_rigid_bodies = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="player/XROrigin/XRToolsPlayerBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.582613)
 shape = SubResource("CapsuleShape3D_fy7ik")
+disabled = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.58894)
 shape = SubResource("CapsuleShape3D_uox6i")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(-0.220772, -0.975312, -0.00516406, 0.254535, -0.0627264, 0.965027, -0.941526, 0.211737, 0.2621, -4.2177, 1.84116, -4.5774)
+transform = Transform3D(-0.220772, -0.975312, -0.00516406, 0.254535, -0.0627263, 0.965027, -0.941526, 0.211737, 0.262099, -4.2177, 13.8866, -4.5774)
 light_energy = 16.0
 
 [node name="Moveable_sequencer" parent="." instance=ExtResource("9_rogbi")]
-transform = Transform3D(1, 0, 0, 0, -0.0993198, 0.995056, 0, -0.995056, -0.0993198, -0.227116, 2, -0.344081)
-picked_up_layer = 51380223
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0193613, 0.630297, -0.626726)
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.396912, -0.383041)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.25)
-shape = SubResource("BoxShape3D_m50k3")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.25)
-mesh = SubResource("BoxMesh_4qbqg")
+[connection signal="button_pressed" from="player/XROrigin/right" to="." method="_on_right_button_pressed"]

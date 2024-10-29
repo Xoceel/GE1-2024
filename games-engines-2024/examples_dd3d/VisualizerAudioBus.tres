@@ -1,4 +1,7 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://7sy4h4ibftrk"]
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://7sy4h4ibftrk"]
+
+[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_1efab"]
+resource_name = "SpectrumAnalyzer"
 
 [sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_odciy"]
 resource_name = "SpectrumAnalyzer"
@@ -7,6 +10,8 @@ fft_size = 3
 [resource]
 bus/0/mute = true
 bus/0/volume_db = -20.0
+bus/0/effect/0/effect = SubResource("AudioEffectSpectrumAnalyzer_1efab")
+bus/0/effect/0/enabled = true
 bus/1/name = &"MusicAnalyzer"
 bus/1/solo = false
 bus/1/mute = false

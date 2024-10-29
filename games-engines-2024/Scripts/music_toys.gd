@@ -2,6 +2,8 @@ class_name Root extends Node3D
 
 @onready var environment:Environment = $WorldEnvironment.environment
 
+@onready var right = $player/XROrigin/right
+
 #Toggle between fullscreen and small screen
 func _input(event):
 	if event is InputEventKey and event.pressed and event.keycode == KEY_F:

@@ -17,6 +17,10 @@ var last_instrument = null
 var instrument_steps = []
 var pads = []
 var step_balls = []
+var randomness = 0.0
+var probability = 0.0
+var randomInt : int = 0
+var spectrum
 
 # Load in samples into samples[] : AudioStreams
 # Make a beatpad for each sample that toggles colour on collision and plays the instrument
@@ -30,6 +34,10 @@ func _ready():
 		var asp = AudioStreamPlayer.new()
 		add_child(asp)
 		players.push_back(asp)
+	play_sample(0,1)
+	spectrum = AudioServer.get_bus_effect_instance(0,0)
+	print(spectrum)
+
 
 # I want to check the state of the step balls every frame to see if they have changed
 # this should update the according instrument step array and swap them to true if any have been toggled
@@ -53,7 +61,7 @@ func load_samples():
 				var stream:AudioStream = load(path_str + "/" + file_name)
 				stream.resource_name = file_name
 				samples.push_back(stream)
-				file_names.push_back(file_name)
+				file_names.push_back(file_name.left(len(file_name) - 4))
 			file_name = dir.get_next()
 
 # Make a beatpad for each sample, all in a row with equal space between them in 3D
@@ -64,10 +72,11 @@ func make_beatpads():
 	for instrument in range(samples.size()):
 		row = -(instrument / rowSize)
 		var pad = pad_scene.instantiate()
-		var p = Vector3(s * (instrument % rowSize) * spacer, s * row * spacer, 0)
+		var p = Vector3(s * (instrument % rowSize) * spacer, s * row * (spacer * 1.3), 0)
 		pad.position = p
 		pad.rotation = rotation
 		pad.area_entered.connect(toggle_pad.bind(instrument))
+		pad.get_child(3).set_text(file_names[instrument].left(10))
 		add_child(pad)
 		pads.push_back(pad)
 		
@@ -107,6 +116,7 @@ func make_steps():
 		var sb_pos = Vector3(s * step * spacer, s * 2 * spacer, 0)
 		step_ball.position = sb_pos
 		step_ball.rotation = rotation
+		step_ball.get_child(3).set_text("Step: " + str(step + 1))
 		add_child(step_ball)
 		step_balls.push_back(step_ball)
 
@@ -139,8 +149,8 @@ func play_step(step):
 	var p = Vector3(s * step * spacer, s * 2 * spacer, 0)
 	$timer_ball.position = p
 	for instrument in range(instrument_steps.size()):
-		if instrument_steps[instrument][step]:
-			play_sample(0, instrument)
+		if instrument_steps[instrument][step] and probable_cause():
+			play_sample(0, randomizer(instrument))
 
 # Plays the steps on every timer time out and increments the step
 func _on_timer_timeout() -> void:
@@ -157,3 +167,19 @@ func _on_start_stop_area_entered(area: Area3D) -> void:
 		$timer_ball.visible = true
 	else:
 		$Timer.stop()
+
+func _on_randomness_new_value(probability_to_randomize):
+	randomness = probability_to_randomize
+
+func randomizer(instrument):
+	if randf_range(0.0, 1.0) <= randomness:
+		return randi_range(0, samples.size()-1)
+	else: return instrument
+
+func _on_probability_new_value(value):
+	probability = value
+
+func probable_cause() -> bool:
+	if randf_range(0.0, 1.0) <= probability:
+		return true
+	else: return false

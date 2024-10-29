@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d3la86fft8exy"]
+[gd_scene load_steps=15 format=3 uid="uid://d3la86fft8exy"]
 
 [ext_resource type="Script" path="res://Scripts/sequencer.gd" id="1_f5tdu"]
 [ext_resource type="FontFile" uid="uid://rvjbc8pu44du" path="res://fonts/Hyperspace.otf" id="2_wnqbh"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://croivo7b5qo83" path="res://scenes/main_panel.tscn" id="6_8f5gg"]
 [ext_resource type="FontFile" uid="uid://bv01ijyer8qah" path="res://Schaeffer.ttf" id="7_jkq7d"]
 [ext_resource type="PackedScene" uid="uid://bmlqeo44h07g6" path="res://scenes/slider.tscn" id="8_gdtqh"]
+[ext_resource type="Script" path="res://scenes/fft_start.gd" id="9_0wxqo"]
+[ext_resource type="PackedScene" uid="uid://bxowbwtvxdott" path="res://scenes/bar.tscn" id="10_wtxdm"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_gynoj"]
 radius = 0.02
@@ -99,6 +101,15 @@ pixel_size = 0.0005
 text = "Prob"
 font = ExtResource("7_jkq7d")
 font_size = 30
+
+[node name="FFT_Start" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0247891, 0.513927, 0.0485201)
+script = ExtResource("9_0wxqo")
+
+[node name="Bar" parent="FFT_Start" instance=ExtResource("10_wtxdm")]
+
+[node name="FFT_Stop" type="Node3D" parent="FFT_Start"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4884, 0, 0)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="start_stop" to="." method="_on_start_stop_area_entered"]

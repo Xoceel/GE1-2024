@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://dm1qa5btl0821"]
+[gd_scene load_steps=7 format=3 uid="uid://dm1qa5btl0821"]
 
 [ext_resource type="Script" path="res://Scripts/pad_a.gd" id="1_ubeam"]
+[ext_resource type="FontFile" uid="uid://c7m2s77s7pxfy" path="res://fonts/Minecraft.ttf" id="2_h43et"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_25gaw"]
-radius = 0.02
-height = 0.04
+[sub_resource type="CylinderMesh" id="CylinderMesh_ufrx7"]
+top_radius = 0.02
+bottom_radius = 0.02
+height = 0.02
+radial_segments = 6
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e7fbh"]
 transparency = 1
@@ -17,11 +20,12 @@ radius = 0.02
 
 [node name="Pad" type="Area3D"]
 script = ExtResource("1_ubeam")
-out_color = Color(0, 1, 0.85, 0.670588)
-in_color = Color(1, 0.95, 0, 0.494118)
+out_color = Color(0.766681, 0, 0.188376, 0.670588)
+in_color = Color(0.254902, 0.968627, 0, 0.494118)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_25gaw")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.00655549)
+mesh = SubResource("CylinderMesh_ufrx7")
 surface_material_override/0 = SubResource("StandardMaterial3D_e7fbh")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
@@ -29,5 +33,12 @@ mesh = SubResource("BoxMesh_mlumy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_bjof5")
+
+[node name="Label" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0319552, 0.0135433)
+pixel_size = 0.0001
+text = "mmmmmmm"
+font = ExtResource("2_h43et")
+font_size = 64
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,0 +1,59 @@
+[gd_scene load_steps=11 format=3 uid="uid://bmlqeo44h07g6"]
+
+[ext_resource type="Script" path="res://scenes/slider.gd" id="1_up177"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_o3ke6"]
+size = Vector3(0.05, 0.3, 0.01)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fc0p6"]
+albedo_color = Color(0.377919, 0.377919, 0.377919, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dfdr7"]
+size = Vector3(0.03, 0.02, 0.02)
+
+[sub_resource type="Gradient" id="Gradient_whvya"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_81745"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uxynh"]
+color_ramp = SubResource("Gradient_whvya")
+noise = SubResource("FastNoiseLite_81745")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ghy4"]
+albedo_color = Color(1, 0, 0.215686, 1)
+albedo_texture = SubResource("NoiseTexture2D_uxynh")
+
+[sub_resource type="BoxMesh" id="BoxMesh_psa5v"]
+size = Vector3(0.002, 0.25, 0.001)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uovme"]
+size = Vector3(0.05, 0.3, 0.04)
+
+[node name="Slider" type="StaticBody3D"]
+script = ExtResource("1_up177")
+
+[node name="back" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_o3ke6")
+surface_material_override/0 = SubResource("StandardMaterial3D_fc0p6")
+
+[node name="slide" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00960721)
+mesh = SubResource("BoxMesh_dfdr7")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ghy4")
+
+[node name="channel_left" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00962252, 0, 0.00513627)
+mesh = SubResource("BoxMesh_psa5v")
+
+[node name="channel_left2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01, 0, 0.005)
+mesh = SubResource("BoxMesh_psa5v")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="back_collider" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00103341)
+shape = SubResource("BoxShape3D_uovme")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]
