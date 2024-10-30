@@ -77,7 +77,6 @@ func _process(_delta):
 
 
 func _ready():
-	var pos = global_position
 	width =  abs(end.global_position.x - global_position.x)
 	make_bars()
 	spectrum = AudioServer.get_bus_effect_instance(0, 0)

@@ -18,9 +18,9 @@ var instrument_steps = []
 var pads = []
 var step_balls = []
 var randomness = 0.0
-var probability = 0.0
+var probability = 1.0
 var randomInt : int = 0
-var volume_db = 0
+var volume: float
 
 # Load in samples into samples[] : AudioStreams
 # Make a beatpad for each sample that toggles colour on collision and plays the instrument
@@ -125,6 +125,7 @@ func play_sample(e, i):
 	var p:AudioStream = samples[i]
 	var asp = players[asp_index]
 	asp.stream = p
+	asp.volume_db = volume
 	asp.play()
 	asp_index = (asp_index + 1) % players.size()
 
@@ -146,7 +147,7 @@ func play_step(step):
 	$timer_ball.position = p
 	for instrument in range(instrument_steps.size()):
 		if instrument_steps[instrument][step] and probable_cause():
-			play_sample(0, instrument)
+			play_sample(0, randomizer(instrument))
 			("playing sample: " + str(samples[instrument]))
 
 # Plays the steps on every timer time out and increments the step
@@ -182,4 +183,7 @@ func probable_cause() -> bool:
 	else: return false
 
 func _on_volume_new_value(value):
-	volume_db = remap(value, 0, 180, 0, -60)
+	value = clamp(value, 0, 180)
+	#convert to db
+	value = remap(value, 0, 180, 0, -60)
+	volume = value

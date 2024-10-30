@@ -22,7 +22,7 @@ func _ready() -> void:
 	label_3d.set_text(name)
 	label_3d.set_font_size(textSize)
 
-func _process(delta):
+func _process(_delta):
 	if still_colliding:
 		update_value(colliding_with.global_rotation)
 
@@ -34,14 +34,8 @@ func update_value(rotation_global: Vector3) -> void:
 		knob.rotation.y = rot
 	elif rot <= -2.3:
 		knob.rotation.y = deg_to_rad(180)
-		label_3d.set_text(str(rad_to_deg(knob.rotation.y)))
-	else:
-		knob.rotation.y = 0
-		label_3d.set_text(str(rad_to_deg(knob.rotation.y)))
-
+	else: knob.rotation.y = 0
 	value = rad_to_deg(knob.rotation.y)
-	label_3d.set_text(str(rad_to_deg(knob.rotation.y)))
-	
 	new_value.emit(value)
 
 
@@ -49,5 +43,5 @@ func _on_area_3d_area_entered(area: Area3D):
 	colliding_with = area
 	still_colliding = true
 
-func _on_area_3d_area_exited(area):
+func _on_area_3d_area_exited(_area):
 	still_colliding = false
