@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://croivo7b5qo83"]
+[gd_scene load_steps=9 format=3 uid="uid://croivo7b5qo83"]
 
-[ext_resource type="Material" uid="uid://bi4kud8wra8dv" path="res://Sequencer_mat.tres" id="1_ebxp5"]
-[ext_resource type="Script" path="res://scenes/node_3d.gd" id="2_su3a2"]
+[ext_resource type="Material" uid="uid://bi4kud8wra8dv" path="res://Materials/Sequencer_mat.tres" id="1_ebxp5"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ij1ga"]
 size = Vector3(1.1, 0.4, 0.1)
@@ -62,7 +61,6 @@ size = Vector3(0.5, 0.7, 0.5)
 
 [node name="Node3D" type="Node3D" parent="Top/CSGBox3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.24, 0, -0.24)
-script = ExtResource("2_su3a2")
 
 [node name="Node3D2" type="Node3D" parent="Top/CSGBox3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24, 0, -0.24)

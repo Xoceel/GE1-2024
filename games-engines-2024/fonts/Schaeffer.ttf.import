@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bar7bcesmuhlo"
-path="res://.godot/imported/Roboto-Bold.ttf-e387b0835e03dcb812085bdba6810189.fontdata"
+uid="uid://bv01ijyer8qah"
+path="res://.godot/imported/Schaeffer.ttf-e6a00116a8514cc3513b8aa0f73af736.fontdata"
 
 [deps]
 
-source_file="res://Roboto-Bold.ttf"
-dest_files=["res://.godot/imported/Roboto-Bold.ttf-e387b0835e03dcb812085bdba6810189.fontdata"]
+source_file="res://fonts/Schaeffer.ttf"
+dest_files=["res://.godot/imported/Schaeffer.ttf-e6a00116a8514cc3513b8aa0f73af736.fontdata"]
 
 [params]
 

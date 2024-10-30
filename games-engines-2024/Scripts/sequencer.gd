@@ -39,8 +39,7 @@ func _ready():
 # I want to check the state of the step balls every frame to see if they have changed
 # this should update the according instrument step array and swap them to true if any have been toggled
 func _process(delta):
-	if last_instrument:
-		store_steps(last_instrument)
+	store_steps(last_instrument)
 
 # Loads all sample and file names into respective lists
 func load_samples():
@@ -82,7 +81,7 @@ func make_beatpads():
 # [[false/true...n_steps],[],[]] where the inside brackets represent an instrument and the bool values
 # represent whether they should get played or not on a give step
 func initialise_step_arrays():
-	for i in range(pads.size()):
+	for i in range(samples.size()):
 		var new_instrument = []
 		instrument_steps.push_back(new_instrument)
 		for step in range(steps):
@@ -96,10 +95,10 @@ func find_steps(instrument):
 
 # I want to store the current toggle state of the steps for a given instrument
 # this should get done between swapping to a new instrument
-func store_steps(last_instrument):
+func store_steps(instrument):
 	for i in range(steps):
-		if last_instrument:
-			instrument_steps[last_instrument][i] = step_balls[i].toggle
+		if last_instrument != null:
+			instrument_steps[instrument][i] = step_balls[i].toggle
 
 # Make the visible balls to show the steps for an instrument
 func make_steps():
@@ -119,7 +118,7 @@ func make_steps():
 #func toggle_step(step):
 	#instrument_steps[last_instrument][step]
 
-# Plays a singular sample given a sample index 
+# Plays a singular sample given a sample index, e can always be 0
 func play_sample(e, i):
 	#print("play sample:" + str(i))
 	var p:AudioStream = samples[i]
@@ -132,7 +131,6 @@ func play_sample(e, i):
 # toggles whether or not the pad is true or false and plays it
 func toggle_pad(e, instrument):
 	if last_instrument != null:
-		store_steps(last_instrument)
 		pads[last_instrument].manual_toggle()
 	make_steps()
 	find_steps(instrument)
@@ -143,6 +141,7 @@ func toggle_pad(e, instrument):
 
 # Goes through each instrument on the current column and plays them if they're true
 func play_step(step):
+	print(instrument_steps)
 	var p = Vector3(s * step * spacer, s * 2 * spacer, 0)
 	$timer_ball.position = p
 	for instrument in range(instrument_steps.size()):
