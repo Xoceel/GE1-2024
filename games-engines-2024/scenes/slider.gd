@@ -6,7 +6,7 @@ signal new_value(value: float)
 
 @export var min_value: float = 0.0
 @export var max_value: float = 1.0
-@export var start_value: float = 0.0
+@export var start_value: float = 1.0
 @onready var slide = $slide
 @onready var back_collider = $Area3D/back_collider
 

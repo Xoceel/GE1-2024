@@ -1,0 +1,61 @@
+[gd_scene load_steps=11 format=3 uid="uid://bq1kw8xawt45x"]
+
+[ext_resource type="Script" path="res://scenes/knob.gd" id="1_wpl7o"]
+[ext_resource type="FontFile" uid="uid://c7m2s77s7pxfy" path="res://fonts/Minecraft.ttf" id="2_r7gw2"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_2fhuk"]
+top_radius = 0.02
+bottom_radius = 0.02
+height = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fc0p6"]
+albedo_color = Color(0.377919, 0.377919, 0.377919, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_j46sl"]
+top_radius = 0.01
+bottom_radius = 0.01
+height = 0.03
+radial_segments = 6
+cap_bottom = false
+
+[sub_resource type="Gradient" id="Gradient_whvya"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_81745"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uxynh"]
+color_ramp = SubResource("Gradient_whvya")
+noise = SubResource("FastNoiseLite_81745")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ghy4"]
+albedo_color = Color(1, 0, 0.215686, 1)
+albedo_texture = SubResource("NoiseTexture2D_uxynh")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uovme"]
+size = Vector3(0.04, 0.04, 0.04)
+
+[node name="TurnyKnob" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_wpl7o")
+
+[node name="back" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_2fhuk")
+surface_material_override/0 = SubResource("StandardMaterial3D_fc0p6")
+
+[node name="Knob" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_j46sl")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ghy4")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="back_collider" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0021558)
+shape = SubResource("BoxShape3D_uovme")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -1.39174e-09, -0.0318392)
+pixel_size = 0.001
+font = ExtResource("2_r7gw2")
+font_size = 64
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]

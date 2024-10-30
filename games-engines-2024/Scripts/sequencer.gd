@@ -20,6 +20,7 @@ var step_balls = []
 var randomness = 0.0
 var probability = 0.0
 var randomInt : int = 0
+var volume_db = 0
 
 # Load in samples into samples[] : AudioStreams
 # Make a beatpad for each sample that toggles colour on collision and plays the instrument
@@ -54,6 +55,7 @@ func load_samples():
 				print("Found directory: " + file_name)
 			if file_name.ends_with('.wav.import') or file_name.ends_with('.mp3.import'):
 				file_name = file_name.left(len(file_name) - len('.import'))
+				print(file_name)
 				var stream:AudioStream = load(path_str + "/" + file_name)
 				stream.resource_name = file_name
 				samples.push_back(stream)
@@ -75,7 +77,6 @@ func make_beatpads():
 		pad.get_child(3).set_text(file_names[instrument].left(10))
 		add_child(pad)
 		pads.push_back(pad)
-		
 
 # Creates a new bool array for that instruments steps (should be played on step or not)
 # [[false/true...n_steps],[],[]] where the inside brackets represent an instrument and the bool values
@@ -90,7 +91,6 @@ func initialise_step_arrays():
 # might work to get back to old toggle state but toggles aren't being saved rn
 func find_steps(instrument):
 	for i in range(steps):
-		print("Instrument: "+str(instrument) + " Step: " + str(i))
 		if instrument_steps[instrument][i]:
 			step_balls[i].manual_toggle()
 
@@ -146,14 +146,15 @@ func play_step(step):
 	$timer_ball.position = p
 	for instrument in range(instrument_steps.size()):
 		if instrument_steps[instrument][step] and probable_cause():
-			play_sample(0, randomizer(instrument))
+			play_sample(0, instrument)
+			("playing sample: " + str(samples[instrument]))
 
 # Plays the steps on every timer time out and increments the step
 func _on_timer_timeout() -> void:
 	#print("step " + str(step))
 	play_step(step)
 	step = (step + 1) % steps
-	
+
 
 # Begins the loop of the sequencer purple ball not blue array of balls
 func _on_start_stop_area_entered(area: Area3D) -> void:
@@ -161,7 +162,6 @@ func _on_start_stop_area_entered(area: Area3D) -> void:
 		$Timer.start()
 		$timer_ball.position = Vector3(s * step * spacer, s * 2 * spacer, 0)
 		$timer_ball.visible = true
-		play_sample(0, 0)
 	else:
 		$Timer.stop()
 
@@ -180,3 +180,6 @@ func probable_cause() -> bool:
 	if randf_range(0.0, 1.0) <= probability:
 		return true
 	else: return false
+
+func _on_volume_new_value(value):
+	volume_db = remap(value, 0, 180, 0, -60)

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6d5y8npoosqu"]
+
+[ext_resource type="Script" path="res://scenes/spectrum_visual.gd" id="1_x1h4a"]
+[ext_resource type="PackedScene" uid="uid://bxowbwtvxdott" path="res://scenes/bar.tscn" id="2_qhk8t"]
+
+[node name="SpectrumVisual" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0157337, 0.524033, 0.10286)
+script = ExtResource("1_x1h4a")
+bar = ExtResource("2_qhk8t")
+
+[node name="End" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.466241, 0, 0)

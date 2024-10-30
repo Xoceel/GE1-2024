@@ -4,6 +4,5 @@
 resource_name = "SpectrumAnalyzer"
 
 [resource]
-bus/0/send = &"MusicVisualiser"
 bus/0/effect/0/effect = SubResource("AudioEffectSpectrumAnalyzer_rl88g")
 bus/0/effect/0/enabled = true
