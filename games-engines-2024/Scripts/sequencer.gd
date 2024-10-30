@@ -4,7 +4,9 @@ extends Marker3D
 @export var path_str = "res://samples"
 @export var pad_scene:PackedScene
 @export var steps = 12
+@onready var timer = $Timer
 
+var wait_time
 var instruments:int
 var s = 0.04
 var spacer = 1.1
@@ -27,6 +29,8 @@ var volume: float
 # Set up an array to keep track of all the instruments whether they should be played or not on a given step
 # Set up 50 asps to play the audio 
 func _ready():
+	wait_time = timer.wait_time
+	#swing(.75)
 	load_samples()
 	make_beatpads()
 	initialise_step_arrays()
@@ -186,3 +190,13 @@ func _on_volume_new_value(value):
 	#convert to db
 	value = remap(value, 0, 180, 0, -60)
 	volume = value
+
+#func swing(ratio):
+	##effects the time between beats swing is normally longer on first beat and shorter on second
+	##try implementhing this using a number to give a ratio from ranging from 1:1 - 3-1
+	#var long_beat:float = wait_time * 2 * ratio
+	#var short_beat:float = wait_time * 2 - long_beat
+	#if timer.wait_time == wait_time:
+		#timer.wait_time = long_beat
+	#elif timer.wait_time == long_beat:
+		#timer.wait_time = short_beat
