@@ -23,6 +23,8 @@ var randomness = 0.0
 var probability = 1.0
 var randomInt : int = 0
 var volume: float
+var rev_toggle: bool = false
+var phase_toggle: bool = false
 
 # Load in samples into samples[] : AudioStreams
 # Make a beatpad for each sample that toggles colour on collision and plays the instrument
@@ -38,6 +40,8 @@ func _ready():
 		var asp = AudioStreamPlayer.new()
 		add_child(asp)
 		players.push_back(asp)
+	print(samples)
+	print(file_names)
 
 
 # I want to check the state of the step balls every frame to see if they have changed
@@ -55,7 +59,7 @@ func load_samples():
 		# From https://forum.godotengine.org/t/loading-an-ogg-or-wav-file-from-res-sfx-in-gdscript/28243/2
 		while file_name != "":
 			if dir.current_is_dir():
-				print("Found directory: " + file_name)
+				print(dir.get_files())
 			if file_name.ends_with('.wav.import') or file_name.ends_with('.mp3.import'):
 				file_name = file_name.left(len(file_name) - len('.import'))
 				print(file_name)
@@ -63,7 +67,9 @@ func load_samples():
 				stream.resource_name = file_name
 				samples.push_back(stream)
 				file_names.push_back(file_name.left(len(file_name) - 4))
+			else: print(file_name)
 			file_name = dir.get_next()
+		dir.list_dir_end()
 
 # Make a beatpad for each sample, all in a row with equal space between them in 3D
 # and adds them to a list of pads so I can make sure only one is toggled at a time
@@ -191,6 +197,10 @@ func _on_volume_new_value(value):
 	value = remap(value, 0, 180, 0, -60)
 	volume = value
 
+func clear_pattern():
+	for i in range(instrument_steps.size()):
+		for j in range(steps):
+			instrument_steps[i][j] = false
 #func swing(ratio):
 	##effects the time between beats swing is normally longer on first beat and shorter on second
 	##try implementhing this using a number to give a ratio from ranging from 1:1 - 3-1
@@ -200,3 +210,25 @@ func _on_volume_new_value(value):
 		#timer.wait_time = long_beat
 	#elif timer.wait_time == long_beat:
 		#timer.wait_time = short_beat
+
+
+func _on_bpm_new_value(value):
+	var bpm = remap(value, 0, 180, 60, 480)
+	timer.wait_time = 60/bpm
+
+
+func _on_clear_pattern_pressed():
+	for i in range(step_balls.size()):
+		if step_balls[i].toggle:
+			step_balls[i].manual_toggle()
+	clear_pattern()
+
+
+func _on_reverb_pressed():
+	rev_toggle =! rev_toggle
+	AudioServer.set_bus_effect_enabled(0, 2, rev_toggle)
+
+
+func _on_phaser_pressed():
+	phase_toggle =! phase_toggle
+	AudioServer.set_bus_effect_enabled(0, 2, rev_toggle)

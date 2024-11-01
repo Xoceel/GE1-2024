@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d3la86fft8exy"]
+[gd_scene load_steps=18 format=3 uid="uid://d3la86fft8exy"]
 
 [ext_resource type="Script" path="res://Scripts/sequencer.gd" id="1_f5tdu"]
 [ext_resource type="FontFile" uid="uid://rvjbc8pu44du" path="res://fonts/Hyperspace.otf" id="2_wnqbh"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://bmlqeo44h07g6" path="res://scenes/slider.tscn" id="8_gdtqh"]
 [ext_resource type="PackedScene" uid="uid://b6d5y8npoosqu" path="res://scenes/spectrum_visual.tscn" id="10_1b3kf"]
 [ext_resource type="PackedScene" uid="uid://bq1kw8xawt45x" path="res://scenes/knob.tscn" id="11_r2c2o"]
+[ext_resource type="PackedScene" uid="uid://f3wba0fspxqb" path="res://scenes/button.tscn" id="11_vpqjl"]
+[ext_resource type="Script" path="res://scenes/button2.gd" id="12_3sdne"]
+[ext_resource type="Script" path="res://scenes/button1.gd" id="13_0ospv"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_gynoj"]
 radius = 0.02
@@ -109,9 +112,26 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.134
 
 [node name="SpectrumVisual" parent="." instance=ExtResource("10_1b3kf")]
 
+[node name="BPM" parent="." instance=ExtResource("11_r2c2o")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.247, 0.528, 0.16)
+
+[node name="ClearPattern" parent="." instance=ExtResource("11_vpqjl")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.569823, 0.580831, 0.160258)
+
+[node name="Reverb" parent="." instance=ExtResource("11_vpqjl")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.698265, 0.528131, 0.160258)
+script = ExtResource("12_3sdne")
+
+[node name="Phaser" parent="." instance=ExtResource("11_vpqjl")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.568448, 0.457964, 0.188436)
+script = ExtResource("13_0ospv")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="start_stop" to="." method="_on_start_stop_area_entered"]
 [connection signal="new_value" from="StepEffects/Randomness" to="." method="_on_slider_new_value"]
 [connection signal="new_value" from="StepEffects/Randomness" to="." method="_on_randomness_new_value"]
 [connection signal="new_value" from="StepEffects/Probability" to="." method="_on_probability_new_value"]
 [connection signal="new_value" from="Volume" to="." method="_on_volume_new_value"]
+[connection signal="new_value" from="BPM" to="." method="_on_bpm_new_value"]
+[connection signal="pressed" from="ClearPattern" to="." method="_on_clear_pattern_pressed"]
+[connection signal="pressed" from="Reverb" to="." method="_on_reverb_pressed"]

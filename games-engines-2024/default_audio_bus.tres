@@ -1,8 +1,25 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://b0whhea3e0obi"]
+[gd_resource type="AudioBusLayout" load_steps=5 format=3 uid="uid://b0whhea3e0obi"]
 
 [sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_rl88g"]
 resource_name = "SpectrumAnalyzer"
 
+[sub_resource type="AudioEffectPitchShift" id="AudioEffectPitchShift_7r8c2"]
+resource_name = "PitchShift"
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_whjfo"]
+resource_name = "Reverb"
+predelay_feedback = 0.2
+room_size = 0.25
+
+[sub_resource type="AudioEffectPhaser" id="AudioEffectPhaser_ejcm6"]
+resource_name = "Phaser"
+
 [resource]
 bus/0/effect/0/effect = SubResource("AudioEffectSpectrumAnalyzer_rl88g")
 bus/0/effect/0/enabled = true
+bus/0/effect/1/effect = SubResource("AudioEffectPitchShift_7r8c2")
+bus/0/effect/1/enabled = false
+bus/0/effect/2/effect = SubResource("AudioEffectReverb_whjfo")
+bus/0/effect/2/enabled = false
+bus/0/effect/3/effect = SubResource("AudioEffectPhaser_ejcm6")
+bus/0/effect/3/enabled = false
