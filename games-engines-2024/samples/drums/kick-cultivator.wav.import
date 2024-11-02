@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://ckssbvog8n12o"
-path="res://.godot/imported/kick-cultivator.wav-7560468a89d0f34799354b486ff096e7.sample"
+path="res://.godot/imported/kick-cultivator.wav-90760e63fa1c98ebff01cbacc4067dcf.sample"
 
 [deps]
 
-source_file="res://samples/kick-cultivator.wav"
-dest_files=["res://.godot/imported/kick-cultivator.wav-7560468a89d0f34799354b486ff096e7.sample"]
+source_file="res://samples/drums/kick-cultivator.wav"
+dest_files=["res://.godot/imported/kick-cultivator.wav-90760e63fa1c98ebff01cbacc4067dcf.sample"]
 
 [params]
 

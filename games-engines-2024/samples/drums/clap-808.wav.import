@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://c3kqivifgsk1t"
-path="res://.godot/imported/perc-laser.wav-6aeb9940a2afd83b6a4f802c9414b8e0.sample"
+uid="uid://bwec71asu2myi"
+path="res://.godot/imported/clap-808.wav-61e2a36cfbb29d04015e4852239ee0e8.sample"
 
 [deps]
 
-source_file="res://samples/perc-laser.wav"
-dest_files=["res://.godot/imported/perc-laser.wav-6aeb9940a2afd83b6a4f802c9414b8e0.sample"]
+source_file="res://samples/drums/clap-808.wav"
+dest_files=["res://.godot/imported/clap-808.wav-61e2a36cfbb29d04015e4852239ee0e8.sample"]
 
 [params]
 

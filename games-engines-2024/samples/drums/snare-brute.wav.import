@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c5k1kerw52vvp"
-path="res://.godot/imported/snare-brute.wav-244df3a8fc02d80c70ec284cdb093f68.sample"
+path="res://.godot/imported/snare-brute.wav-10bfaf4b650ce1f8713623f07f4189db.sample"
 
 [deps]
 
-source_file="res://samples/snare-brute.wav"
-dest_files=["res://.godot/imported/snare-brute.wav-244df3a8fc02d80c70ec284cdb093f68.sample"]
+source_file="res://samples/drums/snare-brute.wav"
+dest_files=["res://.godot/imported/snare-brute.wav-10bfaf4b650ce1f8713623f07f4189db.sample"]
 
 [params]
 

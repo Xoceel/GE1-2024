@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dwe01ancf8na3"
-path="res://.godot/imported/How_Bout_Dat_2.wav-ba1c9668fd4267f554970bd166d53e63.sample"
+path="res://.godot/imported/How_Bout_Dat_2.wav-f641155cfc7fa2157f05f5ac4389e01e.sample"
 
 [deps]
 
-source_file="res://samples/How_Bout_Dat_2.wav"
-dest_files=["res://.godot/imported/How_Bout_Dat_2.wav-ba1c9668fd4267f554970bd166d53e63.sample"]
+source_file="res://samples/pianos/How_Bout_Dat_2.wav"
+dest_files=["res://.godot/imported/How_Bout_Dat_2.wav-f641155cfc7fa2157f05f5ac4389e01e.sample"]
 
 [params]
 

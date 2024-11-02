@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://jvyx73onao8w"
-path="res://.godot/imported/openhat-tight.wav-3cc538bfec54d9eddd7def452ad4c52c.sample"
+path="res://.godot/imported/openhat-tight.wav-aa838513f086b2f26a648d865083ff3d.sample"
 
 [deps]
 
-source_file="res://samples/openhat-tight.wav"
-dest_files=["res://.godot/imported/openhat-tight.wav-3cc538bfec54d9eddd7def452ad4c52c.sample"]
+source_file="res://samples/drums/openhat-tight.wav"
+dest_files=["res://.godot/imported/openhat-tight.wav-aa838513f086b2f26a648d865083ff3d.sample"]
 
 [params]
 
