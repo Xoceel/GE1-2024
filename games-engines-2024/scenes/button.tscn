@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://f3wba0fspxqb"]
+[gd_scene load_steps=9 format=3 uid="uid://f3wba0fspxqb"]
 
 [ext_resource type="Script" path="res://scenes/button.gd" id="1_cm283"]
 [ext_resource type="FontFile" uid="uid://c7m2s77s7pxfy" path="res://fonts/Minecraft.ttf" id="2_5fydx"]
+[ext_resource type="Texture2D" uid="uid://b1ep4r62nag21" path="res://Materials/button_noise.tres" id="2_awinx"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_2fhuk"]
 top_radius = 0.02
@@ -17,17 +18,9 @@ bottom_radius = 0.01
 height = 0.02
 cap_bottom = false
 
-[sub_resource type="Gradient" id="Gradient_whvya"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_81745"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uxynh"]
-color_ramp = SubResource("Gradient_whvya")
-noise = SubResource("FastNoiseLite_81745")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ghy4"]
 albedo_color = Color(1, 0, 0.215686, 1)
-albedo_texture = SubResource("NoiseTexture2D_uxynh")
+albedo_texture = ExtResource("2_awinx")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uovme"]
 size = Vector3(0.04, 0.04, 0.04)

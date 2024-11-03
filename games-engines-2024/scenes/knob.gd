@@ -18,7 +18,6 @@ var colliding_with: Area3D
 var still_colliding: bool = false
 
 func _ready() -> void:
-	print(str(rotation) + " This is the rotation")
 	label_3d.set_text(name)
 	label_3d.set_font_size(textSize)
 

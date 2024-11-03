@@ -11,8 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://b6d5y8npoosqu" path="res://scenes/spectrum_visual.tscn" id="10_1b3kf"]
 [ext_resource type="PackedScene" uid="uid://bq1kw8xawt45x" path="res://scenes/knob.tscn" id="11_r2c2o"]
 [ext_resource type="PackedScene" uid="uid://f3wba0fspxqb" path="res://scenes/button.tscn" id="11_vpqjl"]
-[ext_resource type="Script" path="res://scenes/button2.gd" id="12_3sdne"]
-[ext_resource type="Script" path="res://scenes/button1.gd" id="13_0ospv"]
+[ext_resource type="Material" uid="uid://b1f7to57go2ck" path="res://Materials/knob.tres" id="12_fla5f"]
+[ext_resource type="Material" uid="uid://dvo75cymypytd" path="res://Materials/green.tres" id="13_tmubj"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_gynoj"]
 radius = 0.02
@@ -29,109 +29,133 @@ height = 0.04
 radius = 0.02
 
 [node name="sequencer" type="Marker3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00268209, 0.00288111, -0.00192618)
 script = ExtResource("1_f5tdu")
 font = ExtResource("2_wnqbh")
 pad_scene = ExtResource("3_1vohi")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.125
-
 [node name="timer_ball" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 visible = false
 mesh = SubResource("SphereMesh_gynoj")
 surface_material_override/0 = ExtResource("4_6xvuu")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23, 0.1, -0.05)
-mesh = SubResource("BoxMesh_ij1ga")
-surface_material_override/0 = ExtResource("5_bq7xx")
-
-[node name="start_stop" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0)
-collision_layer = 0
-
-[node name="mesh" type="MeshInstance3D" parent="start_stop"]
-mesh = SubResource("SphereMesh_xdnjr")
-surface_material_override/0 = ExtResource("4_6xvuu")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="start_stop"]
-shape = SubResource("SphereShape3D_wku2e")
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.125
 
 [node name="Main_panel" parent="." instance=ExtResource("6_8f5gg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0.000855183, 0, -0.000855183, 1, 0.21923, 0.0859472, -0.0577583)
+transform = Transform3D(1, 0, 0, 0, 1, 0.000855183, 0, -0.000855183, 1, 0, 0, -0.06)
 
-[node name="Labels" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0932837, 0.0431665, 0.00128704)
+[node name="Labels" type="Label3D" parent="Main_panel"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, -0.000855182, 0, 0.000855182, 0.999999, -0.363428, -0.0428312, 0.0590087)
 pixel_size = 0.0005
 text = "Stop/Start"
 font = ExtResource("7_jkq7d")
 font_size = 30
 
-[node name="Label3D" type="Label3D" parent="Labels"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.210569, -0.0033326, -1.33514e-05)
+[node name="Step Count" type="Label3D" parent="Main_panel/Labels"]
+transform = Transform3D(1, 0, 0, 0, 1, -2.77556e-17, 0, 2.77556e-17, 1, 2.38419e-07, 0.145671, 0)
 pixel_size = 0.0005
-text = "Instruments"
+text = "Step Count"
 font = ExtResource("7_jkq7d")
 font_size = 30
 
-[node name="Label3D2" type="Label3D" parent="Labels"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1777, 0.0836527, -1.33514e-05)
-pixel_size = 0.0005
-text = "Steps"
-font = ExtResource("7_jkq7d")
-font_size = 30
+[node name="StepEffects" type="Node3D" parent="Main_panel"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, -0.000855182, 0, 0.000855182, 0.999999, -0.21923, -0.0859965, 0.0576848)
 
-[node name="StepEffects" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.32831e-10, 0, 0)
-
-[node name="Randomness" parent="StepEffects" instance=ExtResource("8_gdtqh")]
+[node name="Randomness" parent="Main_panel/StepEffects" instance=ExtResource("8_gdtqh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.600114, 0.071487, -0.00240732)
 start_value = 0.0
 
-[node name="Label3D2" type="Label3D" parent="StepEffects/Randomness"]
+[node name="Label3D2" type="Label3D" parent="Main_panel/StepEffects/Randomness"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0024572, 0.171023, 0.00365889)
 pixel_size = 0.0005
 text = "Rand"
 font = ExtResource("7_jkq7d")
 font_size = 30
 
-[node name="Probability" parent="StepEffects" instance=ExtResource("8_gdtqh")]
+[node name="Probability" parent="Main_panel/StepEffects" instance=ExtResource("8_gdtqh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.696605, 0.071487, -0.00240732)
 
-[node name="Label3D3" type="Label3D" parent="StepEffects/Probability"]
+[node name="Label3D3" type="Label3D" parent="Main_panel/StepEffects/Probability"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0009799, 0.171023, 0.00365889)
 pixel_size = 0.0005
 text = "Prob"
 font = ExtResource("7_jkq7d")
 font_size = 30
 
-[node name="Volume" parent="." instance=ExtResource("11_r2c2o")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.134179, 0.528131, 0.160258)
+[node name="Volume" parent="Main_panel" instance=ExtResource("11_r2c2o")]
+transform = Transform3D(1, 0, 0, 0, 0.104528, -0.994522, 0, 0.994522, 0.104528, -0.353409, 0.441997, 0.218394)
 
-[node name="SpectrumVisual" parent="." instance=ExtResource("10_1b3kf")]
+[node name="SpectrumVisual" parent="Main_panel" instance=ExtResource("10_1b3kf")]
+transform = Transform3D(1, 0, 0, 0, 0.999999, -0.000855182, 0, 0.000855182, 0.999999, -0.234964, 0.437948, 0.160993)
 
-[node name="BPM" parent="." instance=ExtResource("11_r2c2o")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.247, 0.528, 0.16)
+[node name="BPM" parent="Main_panel" instance=ExtResource("11_r2c2o")]
+transform = Transform3D(1, 0, 0, 0, 0.104528, -0.994522, 0, 0.994522, 0.104528, -0.46623, 0.441866, 0.218136)
 
-[node name="ClearPattern" parent="." instance=ExtResource("11_vpqjl")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.569823, 0.580831, 0.160258)
+[node name="Clear" parent="Main_panel" instance=ExtResource("11_vpqjl")]
+transform = Transform3D(1, 0, 0, 0, 0.104528, -0.994522, 0, 0.994522, 0.104528, 0.319042, 0.502546, 0.213487)
+mat = ExtResource("12_fla5f")
 
-[node name="Reverb" parent="." instance=ExtResource("11_vpqjl")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.698265, 0.528131, 0.160258)
-script = ExtResource("12_3sdne")
+[node name="Reverb" parent="Main_panel" instance=ExtResource("11_vpqjl")]
+transform = Transform3D(1, 0, 0, 0, 0.104528, -0.994522, 0, 0.994522, 0.104528, 0.319, 0.417, 0.221)
+mat = ExtResource("13_tmubj")
 
-[node name="Phaser" parent="." instance=ExtResource("11_vpqjl")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.568448, 0.457964, 0.188436)
-script = ExtResource("13_0ospv")
+[node name="16" parent="Main_panel" instance=ExtResource("11_vpqjl")]
+transform = Transform3D(1, 0, 0, 0, -4.3714e-08, -1, 0, 1, -4.3714e-08, -0.321614, 0.0185958, 0.0639489)
+mat = ExtResource("13_tmubj")
+
+[node name="12" parent="Main_panel" instance=ExtResource("11_vpqjl")]
+transform = Transform3D(1, 0, 0, 0, -4.3714e-08, -1, 0, 1, -4.3714e-08, -0.407533, 0.0185958, 0.0639489)
+mat = ExtResource("13_tmubj")
+
+[node name="Phaser" parent="Main_panel" instance=ExtResource("11_vpqjl")]
+transform = Transform3D(1, 0, 0, 0, 0.104528, -0.994522, 0, 0.994522, 0.104528, 0.455667, 0.502546, 0.213487)
+mat = ExtResource("12_fla5f")
+
+[node name="Raised Panel" type="MeshInstance3D" parent="Main_panel"]
+transform = Transform3D(1, 0, 0, 0, 1, -0.000855183, 0, 0.000855183, 1, 0.01077, 0.0140462, 0.00777031)
+mesh = SubResource("BoxMesh_ij1ga")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("5_bq7xx")
+
+[node name="start_stop" type="Area3D" parent="Main_panel"]
+transform = Transform3D(1, 0, 0, 0, 1, -0.000855183, 0, 0.000855183, 1, -0.364487, -0.0859966, 0.0576848)
+collision_layer = 0
+
+[node name="mesh" type="MeshInstance3D" parent="Main_panel/start_stop"]
+mesh = SubResource("SphereMesh_xdnjr")
+surface_material_override/0 = ExtResource("4_6xvuu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Main_panel/start_stop"]
+shape = SubResource("SphereShape3D_wku2e")
+
+[node name="Beatpad_Marker" type="Marker3D" parent="Main_panel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.229823, -0.0873841, 0.00314807)
+
+[node name="Instruments_label" type="Label3D" parent="Main_panel/Beatpad_Marker"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, -0.000855182, 0, 0.000855182, 0.999999, 0.146055, 0.0412203, 0.0558444)
+pixel_size = 0.0005
+text = "Instruments"
+font = ExtResource("7_jkq7d")
+font_size = 30
+
+[node name="Steps_Marker" type="Marker3D" parent="Main_panel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23, 0.024, 0.003)
+
+[node name="Label3D2" type="Label3D" parent="Main_panel/Steps_Marker"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, -0.000855182, 0, 0.000855182, 0.999999, 0.0943191, 0.0168214, 0.0560669)
+pixel_size = 0.0005
+text = "Steps"
+font = ExtResource("7_jkq7d")
+font_size = 30
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="area_entered" from="start_stop" to="." method="_on_start_stop_area_entered"]
-[connection signal="new_value" from="StepEffects/Randomness" to="." method="_on_slider_new_value"]
-[connection signal="new_value" from="StepEffects/Randomness" to="." method="_on_randomness_new_value"]
-[connection signal="new_value" from="StepEffects/Probability" to="." method="_on_probability_new_value"]
-[connection signal="new_value" from="Volume" to="." method="_on_volume_new_value"]
-[connection signal="new_value" from="BPM" to="." method="_on_bpm_new_value"]
-[connection signal="pressed" from="ClearPattern" to="." method="_on_clear_pattern_pressed"]
-[connection signal="pressed" from="Reverb" to="." method="_on_reverb_pressed"]
+[connection signal="new_value" from="Main_panel/StepEffects/Randomness" to="." method="_on_slider_new_value"]
+[connection signal="new_value" from="Main_panel/StepEffects/Randomness" to="." method="_on_randomness_new_value"]
+[connection signal="new_value" from="Main_panel/StepEffects/Probability" to="." method="_on_probability_new_value"]
+[connection signal="new_value" from="Main_panel/Volume" to="." method="_on_volume_new_value"]
+[connection signal="new_value" from="Main_panel/BPM" to="." method="_on_bpm_new_value"]
+[connection signal="pressed" from="Main_panel/Clear" to="." method="_on_clear_pattern_pressed"]
+[connection signal="pressed" from="Main_panel/Reverb" to="." method="_on_reverb_pressed"]
+[connection signal="pressed" from="Main_panel/16" to="." method="_on_16_pressed"]
+[connection signal="pressed" from="Main_panel/12" to="." method="_on_12_pressed"]
+[connection signal="area_entered" from="Main_panel/start_stop" to="." method="_on_start_stop_area_entered"]

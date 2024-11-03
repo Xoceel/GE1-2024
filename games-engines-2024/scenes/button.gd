@@ -11,12 +11,16 @@ signal pressed()
 @onready var back_collider = $Area3D/back_collider
 @export var textSize:int = 32
 @onready var button = $Button
-
+@export var mat:StandardMaterial3D
+var mat2
 var colliding_with: Area3D
 var still_colliding: bool = false
 
 func _ready() -> void:
-	print(str(rotation) + " This is the rotation")
+	mat = StandardMaterial3D.new()
+	mat.albedo_color = Color(1, 0, 0.216)
+	mat.albedo_texture = load("res://Materials/button_noise.tres")
+	button.set_surface_override_material(0, mat)
 	label_3d.set_text(name)
 	label_3d.set_font_size(textSize)
 

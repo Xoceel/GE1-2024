@@ -8,7 +8,6 @@ margin = 0.01
 size = Vector3(1, 2, 0.3)
 
 [node name="Moveable_sequencer" instance=ExtResource("1_46s3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.976574, 0)
 picked_up_layer = 65551
 
 [node name="sequencer" parent="." index="0" instance=ExtResource("2_kmiga")]
