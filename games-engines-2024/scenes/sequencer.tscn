@@ -158,4 +158,5 @@ font_size = 30
 [connection signal="pressed" from="Main_panel/Reverb" to="." method="_on_reverb_pressed"]
 [connection signal="pressed" from="Main_panel/16" to="." method="_on_16_pressed"]
 [connection signal="pressed" from="Main_panel/12" to="." method="_on_12_pressed"]
+[connection signal="pressed" from="Main_panel/Phaser" to="." method="_on_phaser_pressed"]
 [connection signal="area_entered" from="Main_panel/start_stop" to="." method="_on_start_stop_area_entered"]

@@ -138,14 +138,14 @@ func play_sample(e, i):
 func toggle_pad(e, instrument):
 	if last_instrument != null:
 		pads[last_instrument].manual_toggle()
+	make_steps()
 	find_steps(instrument)
 	play_sample(0, instrument)
 	last_instrument = instrument
 
 # Goes through each instrument on the current column and plays them if they're true
 func play_step(step):
-	var p = Vector3(s * step * spacer, s * 2 * spacer, 0)
-	timer_ball.position = p
+	timer_ball.position = step_balls[step].position
 	print(timer_ball.position)
 	print(step_balls[step].position)
 	for instrument in range(instrument_steps.size()):
@@ -220,11 +220,6 @@ func _on_reverb_pressed():
 	rev_toggle =! rev_toggle
 	AudioServer.set_bus_effect_enabled(0, 2, rev_toggle)
 
-
-func _on_phaser_pressed():
-	phase_toggle =! phase_toggle
-	AudioServer.set_bus_effect_enabled(0, 2, rev_toggle)
-
 func _on_12_pressed():
 	main_panel.scale.x = 1.0
 	steps = 12
@@ -234,3 +229,7 @@ func _on_16_pressed():
 	main_panel.scale.x = 1.5
 	steps = 16
 	make_steps()
+
+func _on_phaser_pressed():
+	phase_toggle =! phase_toggle
+	AudioServer.set_bus_effect_enabled(0, 3, phase_toggle)
