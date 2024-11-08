@@ -142,15 +142,15 @@ font_size = 30
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23, 0.024, 0.003)
 
 [node name="Label3D2" type="Label3D" parent="Main_panel/Steps_Marker"]
-transform = Transform3D(1, 0, 0, 0, 0.999999, -0.000855182, 0, 0.000855182, 0.999999, 0.0943191, 0.0168214, 0.0560669)
+transform = Transform3D(1, 0, 0, 0, 0.999999, -0.000855182, 0, 0.000855182, 0.999999, 0.115139, 0.0409287, 0.0560875)
 pixel_size = 0.0005
 text = "Steps"
 font = ExtResource("7_jkq7d")
 font_size = 30
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="new_value" from="Main_panel/StepEffects/Randomness" to="." method="_on_slider_new_value"]
 [connection signal="new_value" from="Main_panel/StepEffects/Randomness" to="." method="_on_randomness_new_value"]
+[connection signal="new_value" from="Main_panel/StepEffects/Randomness" to="." method="_on_slider_new_value"]
 [connection signal="new_value" from="Main_panel/StepEffects/Probability" to="." method="_on_probability_new_value"]
 [connection signal="new_value" from="Main_panel/Volume" to="." method="_on_volume_new_value"]
 [connection signal="new_value" from="Main_panel/BPM" to="." method="_on_bpm_new_value"]

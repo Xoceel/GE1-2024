@@ -40,6 +40,7 @@ func _ready():
 	load_samples()
 	print(file_names)
 	make_beatpads()
+	make_steps()
 	initialise_step_arrays()
 	for i in range(100):
 		var asp = AudioStreamPlayer.new()
@@ -137,7 +138,6 @@ func play_sample(e, i):
 func toggle_pad(e, instrument):
 	if last_instrument != null:
 		pads[last_instrument].manual_toggle()
-	make_steps()
 	find_steps(instrument)
 	play_sample(0, instrument)
 	last_instrument = instrument
@@ -228,7 +228,9 @@ func _on_phaser_pressed():
 func _on_12_pressed():
 	main_panel.scale.x = 1.0
 	steps = 12
+	make_steps()
 
 func _on_16_pressed():
 	main_panel.scale.x = 1.5
 	steps = 16
+	make_steps()
