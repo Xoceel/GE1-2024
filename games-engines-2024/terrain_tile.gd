@@ -54,7 +54,7 @@ func create_mesh():
 	var st = SurfaceTool.new()
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
 	
-	var bottom_left = Vector3(-quads_per_tile / 2.0, 0, -quads_per_tile / 2.0)
+	var bottom_left = Vector3(-quads_per_tile * width_scale / 2.0, 0, -quads_per_tile * width_scale / 2.0)
 	
 	# Generate vertices and triangles
 	for row in range(quads_per_tile):

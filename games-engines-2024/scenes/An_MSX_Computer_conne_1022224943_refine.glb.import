@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bw2sfpkokjsim"
-path="res://.godot/imported/An_MSX_Computer_conne_1022224943_refine.glb-4edc51af151e7307231e0a9f05bea944.scn"
+path="res://.godot/imported/An_MSX_Computer_conne_1022224943_refine.glb-3121988ed965d3e78e334a980d0b34c4.scn"
 
 [deps]
 
-source_file="res://An_MSX_Computer_conne_1022224943_refine.glb"
-dest_files=["res://.godot/imported/An_MSX_Computer_conne_1022224943_refine.glb-4edc51af151e7307231e0a9f05bea944.scn"]
+source_file="res://scenes/An_MSX_Computer_conne_1022224943_refine.glb"
+dest_files=["res://.godot/imported/An_MSX_Computer_conne_1022224943_refine.glb-3121988ed965d3e78e334a980d0b34c4.scn"]
 
 [params]
 

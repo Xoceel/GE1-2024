@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" path="res://music_toys.gd" id="1_2fu0y"]
 [ext_resource type="Script" path="res://wall.gd" id="2_sndyd"]
-[ext_resource type="PackedScene" uid="uid://buu3aq61omx1k" path="res://brick.tscn" id="3_qgak8"]
+[ext_resource type="PackedScene" uid="uid://buu3aq61omx1k" path="res://scenes/brick.tscn" id="3_qgak8"]
 [ext_resource type="Material" uid="uid://dvo75cymypytd" path="res://green.tres" id="4_ffxka"]
 [ext_resource type="Script" path="res://tower.gd" id="5_wofw2"]
 [ext_resource type="Script" path="res://player.gd" id="6_q8smx"]
+
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_00q4b"]
 size = Vector2(100, 100)

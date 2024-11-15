@@ -5,8 +5,7 @@
 
 [node name="terrain_tile" type="Node3D"]
 script = ExtResource("1_d16af")
-quads_per_tile = 20
-height_scale = 20.0
+height_scale = 50.0
 perlin_scale = 0.05
 speed = 100.0
 material = ExtResource("2_hq5vq")

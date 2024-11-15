@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://TPCamera.gd" id="1_a1ngr"]
 [ext_resource type="Script" path="res://wall.gd" id="2_qhgrf"]
-[ext_resource type="PackedScene" uid="uid://buu3aq61omx1k" path="res://brick.tscn" id="3_gfp2j"]
+[ext_resource type="PackedScene" uid="uid://buu3aq61omx1k" path="res://scenes/brick.tscn" id="3_gfp2j"]
 [ext_resource type="Material" uid="uid://dvo75cymypytd" path="res://green.tres" id="4_dyro4"]
 [ext_resource type="Script" path="res://tank.gd" id="5_71ijb"]
 [ext_resource type="PackedScene" uid="uid://c1bnq83851e46" path="res://bullet.tscn" id="6_nddus"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://tower.gd" id="8_e8bay"]
 [ext_resource type="Script" path="res://enemy.gd" id="9_lfni5"]
 [ext_resource type="Material" uid="uid://c7gmgs0bnpegq" path="res://red.tres" id="9_oso6i"]
+
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_00q4b"]
 size = Vector2(100, 100)
