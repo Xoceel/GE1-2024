@@ -43,7 +43,7 @@ func _process(delta):
 		if Input.is_key_pressed(KEY_SHIFT):
 			mult = 3
 		
-		var turn = Input.get_axis("turn_left", "turn_right") - v.x	
+		var turn = Input.get_axis("turn_left", "turn_right") - v.x
 		if abs(turn) > 0:   
 			position = position + global_transform.basis.x * speed * turn * mult * delta
 			# global_translate(global_transform.basis.x * speed * turn * mult * delta)

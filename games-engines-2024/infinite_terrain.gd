@@ -84,7 +84,7 @@ func generate_world_around_player():
 				
 				var tile = Tile.new(t, update_time)
 				tiles[tilename] = tile
-				await get_tree().process_frame
+				#await get_tree().process_frame
 			
 			# Clean up old tiles
 			var new_terrain: Dictionary = {}
