@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://i0ocehslidow"]
+
+[ext_resource type="Script" path="res://terrain_tile.gd" id="1_vlse2"]
+[ext_resource type="Script" path="res://FPController.gd" id="2_2fef2"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="tile" type="Node3D" parent="."]
+script = ExtResource("1_vlse2")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0878512, 0.996134, 0, -0.996134, 0.0878512, 0, 2.56562, 0)
+script = ExtResource("2_2fef2")
