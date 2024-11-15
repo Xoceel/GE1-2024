@@ -76,9 +76,10 @@ func create_mesh():
 			st.add_vertex(tl)
 			st.add_vertex(br)
 	
-			st.generate_normals()
 	# We might not need generate_normals() anymore since we're setting them manually
 	# st.generate_normals()
+	st.generate_normals()
+	
 	current_mesh = st.commit()
 
 func noise_2d(x: float, y: float) -> float:
