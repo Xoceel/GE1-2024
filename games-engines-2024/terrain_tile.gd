@@ -6,32 +6,46 @@ extends Node3D
 @export var perlin_scale: float = 0.1
 @export var speed: float = 1.0
 @export var material: Material
+@export var noise_octaves: int = 4
+@export var noise_persistence: float = 0.5
+@export var noise_lacunarity: float = 2.0
 
 var mesh_instance: MeshInstance3D
 var collision_shape: CollisionShape3D
 var current_mesh: ArrayMesh
 var t: float = 0.0
+var noise: FastNoiseLite
 
-# Wait until positioned in scene before generating
 func _enter_tree():
-	# Let a frame pass so our position is set
+	initialize_noise()
 	await get_tree().process_frame
 	generate_mesh()
 
-# Remove the mesh generation from _ready
-func _ready():
-	pass
+func initialize_noise():
+	noise = FastNoiseLite.new()
+	noise.seed = 1234
+	noise.noise_type = FastNoiseLite.TYPE_PERLIN
+	noise.frequency = 0.005  # Lowered frequency for more visible variations
+	noise.fractal_type = FastNoiseLite.FRACTAL_FBM
+	noise.fractal_octaves = noise_octaves
+	noise.fractal_lacunarity = noise_lacunarity
+	noise.fractal_gain = noise_persistence
 
 func sample_cell(row: float, col: float) -> float:
-	# Get the tile's world position
 	var world_pos = global_position
 	
-	# Add the world position to the sampling coordinates
-	var sample_x = ((col * width_scale) + world_pos.x) * perlin_scale
-	var sample_z = ((row * width_scale) + world_pos.z) * perlin_scale
+	# Calculate world coordinates
+	var sample_x = (col * width_scale + world_pos.x)
+	var sample_z = (row * width_scale + world_pos.z)
 	
-	return noise_2d(sample_x, sample_z) * height_scale
+	# Get height from noise
+	var height = noise.get_noise_2d(sample_x, sample_z)
 	
+	# Transform from [-1, 1] to [0, 1] range and apply height scale
+	height = (height + 1.0) * 0.5 * height_scale
+	
+	return height
+
 func generate_mesh():
 	mesh_instance = MeshInstance3D.new()
 	add_child(mesh_instance)
@@ -56,69 +70,62 @@ func create_mesh():
 	
 	var bottom_left = Vector3(-quads_per_tile * width_scale / 2.0, 0, -quads_per_tile * width_scale / 2.0)
 	
-	# Generate vertices and triangles
+	# Create vertices array for the entire grid
+	var vertices = []
+	var grid_size = quads_per_tile + 1
+	
+	# First pass: Generate all vertices
+	for row in range(grid_size):
+		var vertex_row = []
+		for col in range(grid_size):
+			var x = col * width_scale
+			var z = row * width_scale
+			var height = sample_cell(row, col)
+			var vertex = bottom_left + Vector3(x, height, z)
+			vertex_row.append(vertex)
+		vertices.append(vertex_row)
+	
+	# Second pass: Generate triangles using the vertex grid
 	for row in range(quads_per_tile):
 		for col in range(quads_per_tile):
-			var bl = bottom_left + Vector3(col * width_scale, sample_cell(row, col), row * width_scale)
-			var tl = bottom_left + Vector3(col * width_scale, sample_cell(row + 1, col), (row + 1) * width_scale)
-			var tr = bottom_left + Vector3((col + 1) * width_scale, sample_cell(row + 1, col + 1), (row + 1) * width_scale)
-			var br = bottom_left + Vector3((col + 1) * width_scale, sample_cell(row, col + 1), row * width_scale)
+			var bl = vertices[row][col]
+			var tl = vertices[row + 1][col]
+			var tr = vertices[row + 1][col + 1]
+			var br = vertices[row][col + 1]
 			
-			# Calculate normal for first triangle
+			# Calculate UVs
+			var uv_bl = Vector2(float(col) / quads_per_tile, float(row) / quads_per_tile)
+			var uv_tl = Vector2(float(col) / quads_per_tile, float(row + 1) / quads_per_tile)
+			var uv_tr = Vector2(float(col + 1) / quads_per_tile, float(row + 1) / quads_per_tile)
+			var uv_br = Vector2(float(col + 1) / quads_per_tile, float(row) / quads_per_tile)
 			
-			st.add_vertex(br)            
-			st.add_vertex(tl)
+			# First triangle (bl, br, tl)
+			var normal1 = (br - bl).cross(tl - bl).normalized()
+			st.set_normal(normal1)
+			st.set_uv(uv_bl)
 			st.add_vertex(bl)
 			
-			
-			# Second triangle
-			st.add_vertex(tr)
-			st.add_vertex(tl)
+			st.set_normal(normal1)
+			st.set_uv(uv_br)
 			st.add_vertex(br)
+			
+			st.set_normal(normal1)
+			st.set_uv(uv_tl)
+			st.add_vertex(tl)
+			
+			# Second triangle (br, tr, tl)
+			var normal2 = (tr - br).cross(tl - br).normalized()
+			st.set_normal(normal2)
+			st.set_uv(uv_br)
+			st.add_vertex(br)
+			
+			st.set_normal(normal2)
+			st.set_uv(uv_tr)
+			st.add_vertex(tr)
+			
+			st.set_normal(normal2)
+			st.set_uv(uv_tl)
+			st.add_vertex(tl)
 	
-			st.generate_normals()
-	# We might not need generate_normals() anymore since we're setting them manually
-	# st.generate_normals()
+	st.generate_tangents()
 	current_mesh = st.commit()
-
-func noise_2d(x: float, y: float) -> float:
-	# Simple implementation of 2D noise using FastNoiseLite
-	var noise = FastNoiseLite.new()
-	noise.seed = 1234
-	noise.frequency = 1.0
-	return (noise.get_noise_2d(x, y) + 1.0) / 2.0
-
-#func _process(delta: float):
-	#var st = SurfaceTool.new()
-	#st.begin(Mesh.PRIMITIVE_TRIANGLES)
-	#
-	#var bottom_left = Vector3(-quads_per_tile / 2.0, 0, -quads_per_tile / 2.0)
-	#
-	## Generate vertices and triangles with updated heights
-	#for row in range(quads_per_tile):
-		#for col in range(quads_per_tile):
-			#var bl = bottom_left + Vector3(col, sample_cell(row + t, col + t), row)
-			#var tl = bottom_left + Vector3(col, sample_cell(row + 1 + t, col + t), row + 1)
-			#var tr = bottom_left + Vector3(col + 1, sample_cell(row + 1 + t, col + 1 + t), row + 1)
-			#var br = bottom_left + Vector3(col + 1, sample_cell(row + t, col + 1 + t), row)
-			#
-			## First triangle (in the corrected order you found)
-			#st.add_vertex(br)
-			#st.add_vertex(tl)
-			#st.add_vertex(bl)
-			#
-			## Second triangle
-			#st.add_vertex(tr)
-			#st.add_vertex(tl)
-			#st.add_vertex(br)
-	#
-	#st.generate_normals()
-	#current_mesh = st.commit()
-	#mesh_instance.mesh = current_mesh
-	#
-	#var collision_shape_mesh = ConcavePolygonShape3D.new()
-	#collision_shape_mesh.set_faces(current_mesh.get_faces())
-	#collision_shape.shape = collision_shape_mesh
-	#
-	#t += speed * delta
-	#print(t)
