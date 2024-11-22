@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://2p2ebgu5qqs3"
+path="res://.godot/imported/_clay_cyclops_with_1122150824_refine.obj-4d56e7b0adac451fcec08a1561f0a156.mesh"
+
+[deps]
+
+files=["res://.godot/imported/_clay_cyclops_with_1122150824_refine.obj-4d56e7b0adac451fcec08a1561f0a156.mesh"]
+
+source_file="res://_clay_cyclops_with_1122150824_refine_obj/_clay_cyclops_with_1122150824_refine.obj"
+dest_files=["res://.godot/imported/_clay_cyclops_with_1122150824_refine.obj-4d56e7b0adac451fcec08a1561f0a156.mesh", "res://.godot/imported/_clay_cyclops_with_1122150824_refine.obj-4d56e7b0adac451fcec08a1561f0a156.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
