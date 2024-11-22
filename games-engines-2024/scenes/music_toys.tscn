@@ -135,4 +135,9 @@ light_energy = 16.0
 [node name="Moveable_sequencer" parent="." instance=ExtResource("9_rogbi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0193613, 0.630297, -0.626726)
 
+[node name="CollisionShape3D" parent="Moveable_sequencer" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.999993, -0.00378731, 0, 0.00378731, 0.999993, -0.220698, 0.0147562, -0.193246)
+
 [connection signal="button_pressed" from="player/XROrigin/right" to="." method="_on_right_button_pressed"]
+
+[editable path="Moveable_sequencer"]
