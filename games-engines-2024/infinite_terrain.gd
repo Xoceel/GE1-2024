@@ -40,10 +40,6 @@ func generate_world_around_player():
 	var z_move: int = 9223372036854775807
 	
 	while true:
-		if old_game_objects.size() > 0:
-			var obj = old_game_objects.pop_front()
-			obj.queue_free()
-			
 		var tile_width = quads_per_tile * width_scale
 		if abs(x_move) >= tile_width or abs(z_move) >= tile_width:
 			var update_time = Time.get_ticks_msec() / 1000.0
@@ -69,10 +65,10 @@ func generate_world_around_player():
 					else:
 						tiles[tilename].creation_time = update_time
 			
-			# Sort tiles by distance from player
-			new_tiles.sort_custom(func(a: Vector3, b: Vector3) -> bool:
-				return player.position.distance_squared_to(a) < player.position.distance_squared_to(b)
-			)
+			## Sort tiles by distance from player
+			#new_tiles.sort_custom(func(a: Vector3, b: Vector3) -> bool:
+				#return player.position.distance_squared_to(a) < player.position.distance_squared_to(b)
+			#)
 			
 			# Create new tiles
 			for pos in new_tiles:
@@ -85,7 +81,6 @@ func generate_world_around_player():
 				
 				var tile = Tile.new(t, update_time)
 				tiles[tilename] = tile
-				await get_tree().process_frame
 			
 			# Clean up old tiles
 			var new_terrain: Dictionary = {}
@@ -105,6 +100,11 @@ func generate_world_around_player():
 		x_move = int(player.position.x - start_pos.x)
 		z_move = int(player.position.z - start_pos.z)
 
-func _process(_delta: float):
-	# Empty _process function to maintain parity with Unity script
-	pass
+func _process(delta: float):
+	DebugDraw2D.set_text("old_tiles", old_game_objects.size(), 0, Color(255, 255, 255, 255))
+	DebugDraw2D.set_text("test", delta, 0, Color(255, 255, 255, 255))
+	
+	if old_game_objects:
+		for i in range(old_game_objects.size()):
+			old_game_objects[i].queue_free()
+		old_game_objects.clear()

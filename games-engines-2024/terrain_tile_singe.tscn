@@ -1,16 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckd7arxxwrn4u"]
+[gd_scene load_steps=4 format=3 uid="uid://ckd7arxxwrn4u"]
 
 [ext_resource type="Script" path="res://terrain_tile.gd" id="1_fx5wr"]
 [ext_resource type="Script" path="res://FPController.gd" id="2_tr5qu"]
+[ext_resource type="PackedScene" uid="uid://43bu8ehqimhj" path="res://Zombie Stand Up.fbx" id="3_lq5ik"]
 
 [node name="Node3D" type="Node3D"]
-
-[node name="Node3D" type="Node3D" parent="."]
 script = ExtResource("1_fx5wr")
 height_scale = 100.0
+perlin_scale = 0.0
+low = 0.6
+high = 0.4
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.231188, 0.972909, 0, -0.972909, 0.231188, 0, 2.45733, 0)
 script = ExtResource("2_tr5qu")
-speed = 100.0
-rot_speed = 180.0
+
+[node name="Zombie Stand Up" parent="." instance=ExtResource("3_lq5ik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.51553, 0, -2.78164)
