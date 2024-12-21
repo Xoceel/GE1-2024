@@ -34,6 +34,7 @@ func _ready():
 			xr_interface.environment_blend_mode = XRInterface.XR_ENV_BLEND_MODE_ADDITIVE
 		else:
 			print("XR passthrough likely not enabled in export!!!!")
+			#All of this is part of the script :>
 	else:
 		print("OpenXR not initialized, please check if your headset is connected")
 	
