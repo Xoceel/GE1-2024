@@ -8,7 +8,7 @@
 Welcome to the Metaverse
 ```
 
-![](XRsynth.mp4)
+![Project Demo]((https://youtu.be/wHFfQDwnbWw))
 
 ## Assessment
 - 20% Weekly git commits
