@@ -8,7 +8,7 @@
 Welcome to the Metaverse
 ```
 
-![](holo.jpg)
+![](XRsynth.mp4)
 
 ## Assessment
 - 20% Weekly git commits
