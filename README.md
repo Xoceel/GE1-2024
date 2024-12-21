@@ -8,7 +8,8 @@
 Welcome to the Metaverse
 ```
 
-- [Project Demo](https://www.youtube.com/watch?v=wHFfQDwnbWw)
+- [Project Demo]()
+- [![Project Demo](http://img.youtube.com/vi/zgCDuOoTKU8/0.jpg)](https://www.youtube.com/watch?v=wHFfQDwnbWw)
 
 ## Assessment
 - 20% Weekly git commits
