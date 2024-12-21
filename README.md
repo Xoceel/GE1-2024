@@ -9,7 +9,7 @@ Welcome to the Metaverse
 ```
 
 ## Project Demo Video
-- [![Project Demo](img.youtube.com/vi/wHFfQDwnbWw/mqdefault.jpg)](https://www.youtube.com/watch?v=wHFfQDwnbWw)
+- [![Project Demo](img.youtube.com/vi/wHFfQDwnbWw/0.jpg)](https://www.youtube.com/watch?v=wHFfQDwnbWw)
 
 ## Assessment
 - 20% Weekly git commits
