@@ -4,10 +4,6 @@
 
 [Join the DISCORD](https://discord.gg/J9nxA5qV)
 
-```
-Welcome to the Metaverse
-```
-
 ## Project Demo Video
  [![Project Demo](http://img.youtube.com/vi/wHFfQDwnbWw/hqdefault.jpg)](https://www.youtube.com/watch?v=wHFfQDwnbWw)
 
