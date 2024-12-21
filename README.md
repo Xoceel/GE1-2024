@@ -8,7 +8,7 @@
 Welcome to the Metaverse
 ```
 
-![Project Demo]((https://youtu.be/wHFfQDwnbWw))
+![Project Demo](https://youtu.be/wHFfQDwnbWw)
 
 ## Assessment
 - 20% Weekly git commits
